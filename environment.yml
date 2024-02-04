@@ -1,10 +1,10 @@
 name: MSA_tool
 channels:
-  - pytorch
+  #- pytorch
   - defaults
 dependencies:
   - python=3.8
-  - torch
+  #- torch
   - pandas
   - numpy
   - requests
