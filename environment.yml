@@ -1,0 +1,19 @@
+name: MSA_tool
+channels:
+  - pytorch
+  - defaults
+dependencies:
+  - python=3.8
+  - torch
+  - pandas
+  - numpy
+  - requests
+  - scipy
+  - fair-esm
+  - matplotlib
+  - biopython
+  - biotite
+  - scikit-learn
+  - optuna
+  - seaborn
+  - openpyxl
