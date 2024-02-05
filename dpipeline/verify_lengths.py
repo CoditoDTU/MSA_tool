@@ -1,5 +1,5 @@
 from Bio import SeqIO
-
+import argparse
 def verify_lengths(fasta_file, max_length=504):
     """Verifies that all sequences in a FASTA file are under a specified maximum length.
 
@@ -24,3 +24,13 @@ def verify_lengths(fasta_file, max_length=504):
         print("Some sequences in the FASTA file exceed the specified length limit.")
 
     return all_sequences_valid
+
+def main():
+
+    parser = argparse.ArgumentParser(description = 
+                        "Verify that sequences in a FASTA file are under a specified maximum length.")
+    parser.add_argument("fasta_file", help="Path to the FASTA file to verify.")
+    parser.add_argument("--max_length", type=int, default=504, help="Maximum allowed sequence length. Defaults to 504.")
+    args = parser.parse_args()
+
+    verify_lengths(args.fasta_file, args.max_length)

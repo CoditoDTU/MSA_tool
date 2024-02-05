@@ -32,31 +32,5 @@ def Main():
 
     
 
-
-
-
-
 if __name__ == "__main__":
   Main()
-
-
-   
-
-
-
-"""
-Original version without arg parse:
-
-    # Check if the correct number of command-line arguments is provided
-    if len(sys.argv) != 4:
-        print("Usage: python3 len_filt.py <input_fasta> <output_fasta> <max_length>")
-        sys.exit(1)
-
-    # Get the input filename, output filename, and max length from the command-line arguments
-    input_fasta = sys.argv[1]
-    output_fasta = sys.argv[2]
-    max_length = int(sys.argv[3])
-
-    # Call the filter_sequences function with command-line arguments
-    filter_sequences(input_fasta, output_fasta, max_length)
-"""
