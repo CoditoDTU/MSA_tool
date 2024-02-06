@@ -1,0 +1,2 @@
+2024-02-06 13:55:42	1.4s	lethal_hypatia	OK	0aef85a23b8e8fae7e92698319237f8f	9fdb5ac7-4583-4f06-b47d-7e0fc4d4fe33	nextflow run tutorial.nf
+2024-02-06 13:59:01	1.7s	pedantic_curie	OK	3a9e30a5ef34f3343ed810088768b0c3	9fdb5ac7-4583-4f06-b47d-7e0fc4d4fe33	nextflow run tutorial.nf -resume
