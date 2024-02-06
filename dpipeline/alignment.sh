@@ -27,7 +27,7 @@ usage() {
     echo "Usage: $0 -hmm <hmm_file> -r <results_folder> -p <prefix>"
     echo "Options:"
     echo "  -h, --hmm        Path to the HMM file"
-    echo "  -r, --results    Path to the results folder"
+    echo "  -i, --input      Path to the results folder"
     echo "  -p, --prefix     Prefix for file matching"
     echo "  -help            Display this help message"
     exit 0  # Exit successfully after showing usage information
