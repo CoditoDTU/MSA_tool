@@ -1,0 +1,51 @@
+Feb-06 15:44:47.290 [main] DEBUG nextflow.cli.Launcher - $> nextflow run filter.nf
+Feb-06 15:44:47.360 [main] INFO  nextflow.cli.CmdRun - N E X T F L O W  ~  version 23.10.1
+Feb-06 15:44:47.380 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/home/codito/.nextflow/plugins; core-plugins: nf-amazon@2.1.4,nf-azure@1.3.3,nf-cloudcache@0.3.0,nf-codecommit@0.1.5,nf-console@1.0.6,nf-ga4gh@1.1.0,nf-google@1.8.3,nf-tower@1.6.3,nf-wave@1.0.1
+Feb-06 15:44:47.390 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Feb-06 15:44:47.391 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Feb-06 15:44:47.393 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.4.1 in 'deployment' mode
+Feb-06 15:44:47.402 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Feb-06 15:44:47.464 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 by global default
+Feb-06 15:44:47.482 [main] INFO  nextflow.cli.CmdRun - Launching `filter.nf` [furious_meitner] DSL2 - revision: 2eb4dc5d12
+Feb-06 15:44:47.483 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+Feb-06 15:44:47.483 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[]
+Feb-06 15:44:47.493 [main] DEBUG n.secret.LocalSecretsProvider - Secrets store: /home/codito/.nextflow/secrets/store.json
+Feb-06 15:44:47.500 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@10ee04df] - activable => nextflow.secret.LocalSecretsProvider@10ee04df
+Feb-06 15:44:47.561 [main] DEBUG nextflow.Session - Session UUID: 6cc9aa27-502f-440a-ad71-ef9ae1b32dc8
+Feb-06 15:44:47.561 [main] DEBUG nextflow.Session - Run name: furious_meitner
+Feb-06 15:44:47.562 [main] DEBUG nextflow.Session - Executor pool size: 12
+Feb-06 15:44:47.568 [main] DEBUG nextflow.file.FilePorter - File porter settings maxRetries=3; maxTransfers=50; pollTimeout=null
+Feb-06 15:44:47.573 [main] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'FileTransfer' minSize=10; maxSize=36; workQueue=LinkedBlockingQueue[10000]; allowCoreThreadTimeout=false
+Feb-06 15:44:47.595 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 23.10.1 build 5891
+  Created: 12-01-2024 22:01 UTC (17:01 PEST)
+  System: Linux 6.5.0-15-generic
+  Runtime: Groovy 3.0.19 on OpenJDK 64-Bit Server VM 11.0.13+7-b1751.21
+  Encoding: UTF-8 (UTF-8)
+  Process: 203812@codito-desktop-ubuntu [127.0.1.1]
+  CPUs: 12 - Mem: 31.3 GB (8.1 GB) - Swap: 15.3 GB (15.3 GB)
+Feb-06 15:44:47.622 [main] DEBUG nextflow.Session - Work-dir: /home/codito/Documents/MSA_tool/nextflow/work [ext2/ext3]
+Feb-06 15:44:47.622 [main] DEBUG nextflow.Session - Script base path does not exist or is not a directory: /home/codito/Documents/MSA_tool/nextflow/bin
+Feb-06 15:44:47.631 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+Feb-06 15:44:47.640 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+Feb-06 15:44:47.664 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
+Feb-06 15:44:47.675 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 13; maxThreads: 1000
+Feb-06 15:44:47.755 [main] DEBUG nextflow.Session - Session start
+Feb-06 15:44:48.310 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Feb-06 15:44:48.322 [main] DEBUG nextflow.script.ScriptRunner - Parsed script files:
+  Script_57f3f58bd1568e59: /home/codito/Documents/MSA_tool/nextflow/filter.nf
+Feb-06 15:44:48.323 [main] DEBUG nextflow.Session - Session aborted -- Cause: No such property: dpipeline for class: Script_57f3f58bd1568e59
+Feb-06 15:44:48.336 [main] ERROR nextflow.cli.Launcher - @unknown
+groovy.lang.MissingPropertyException: No such property: dpipeline for class: Script_57f3f58bd1568e59
+	at org.codehaus.groovy.runtime.ScriptBytecodeAdapter.unwrap(ScriptBytecodeAdapter.java:65)
+	at org.codehaus.groovy.runtime.callsite.PogoGetPropertySite.getProperty(PogoGetPropertySite.java:51)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callGroovyObjectGetProperty(AbstractCallSite.java:341)
+	at Script_57f3f58bd1568e59.runScript(Script_57f3f58bd1568e59:10)
+	at nextflow.script.BaseScript.run0(BaseScript.groovy:144)
+	at nextflow.script.BaseScript.run(BaseScript.groovy:192)
+	at nextflow.script.ScriptParser.runScript(ScriptParser.groovy:236)
+	at nextflow.script.ScriptRunner.run(ScriptRunner.groovy:242)
+	at nextflow.script.ScriptRunner.execute(ScriptRunner.groovy:137)
+	at nextflow.cli.CmdRun.run(CmdRun.groovy:372)
+	at nextflow.cli.Launcher.run(Launcher.groovy:500)
+	at nextflow.cli.Launcher.main(Launcher.groovy:672)

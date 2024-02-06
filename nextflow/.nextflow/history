@@ -1,2 +1,6 @@
 2024-02-06 13:55:42	1.4s	lethal_hypatia	OK	0aef85a23b8e8fae7e92698319237f8f	9fdb5ac7-4583-4f06-b47d-7e0fc4d4fe33	nextflow run tutorial.nf
 2024-02-06 13:59:01	1.7s	pedantic_curie	OK	3a9e30a5ef34f3343ed810088768b0c3	9fdb5ac7-4583-4f06-b47d-7e0fc4d4fe33	nextflow run tutorial.nf -resume
+2024-02-06 15:44:47	-	furious_meitner	-	2eb4dc5d12ec1f90dc447b66a2c5062b	6cc9aa27-502f-440a-ad71-ef9ae1b32dc8	nextflow run filter.nf
+2024-02-06 15:46:42	959ms	high_ardinghelli	OK	afe37202faa106880f83e470d68202ef	b5efba23-d869-4b6b-bb93-c937a682dc83	nextflow run filter.nf
+2024-02-06 15:50:16	-	determined_noether	-	44310c4a098a96eaae3e1a4b388e6016	31f19547-7337-4517-881b-e813f4ddbe37	nextflow run filter.nf
+2024-02-06 15:51:20	1.3s	chaotic_caravaggio	ERR	5282018aea3ff06e0f1329dd38ee1198	4dc26dea-8225-435a-875b-3ed92872fdeb	nextflow run filter.nf
