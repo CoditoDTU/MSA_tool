@@ -1,0 +1,17 @@
+"Manual steps":
+
+#1. python3 gb1_filt.py : filters sequences <504
+#2. mmseqs createdb gb1.fasta gb1_DB : Converts .fasta into db format
+#3. mmseqs cluster gb1_DB gb1_clu tmp --min-seq-id 0.7: clusters data with an Id thershold of 70%
+#4. mmseqs createseqfiledb gb1_DB gb1_clu gb1_clu_seq: turns cluster into sequences
+#5. clustalo -i gb1_clu_seq0.fasta --hmm-in PF17573.hmm -o gb1_MSA.fasta: MSA of clusters with .hmm profile
+
+Missing Scripts and functionality:
+
+#0. Use Interproscan to obtain family ID
+#0.1 Download all data + .hmm file  associated with family ID
+#1.1 Select data with ##.fasta for conversion
+#2.1 Select the file with only the ## _DB suffix for clustering
+#4.1 Make the train/test split with random sampling of clusters
+#4.2 Make the output of the split into a .fasta
+
