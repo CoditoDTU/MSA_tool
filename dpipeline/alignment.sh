@@ -34,12 +34,12 @@ usage() {
 }
 
 # Parse command-line options
-while getopts "h:r:p:" opt; do
+while getopts "h:i:p:" opt; do
     case $opt in
         h)
             hmm_file="$OPTARG"
             ;;
-        r)
+        i)
             folder_path="$OPTARG"
             ;;
         p)
