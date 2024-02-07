@@ -34,3 +34,7 @@ def Main():
 
 if __name__ == "__main__":
   Main()
+
+  # Option to not filter by length!
+  # filter by seq identity(not priority) 
+  #  

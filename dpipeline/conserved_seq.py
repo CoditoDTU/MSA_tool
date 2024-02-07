@@ -50,3 +50,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+# High priority : Calculate position in the og sequence of the conserved 
+# Report the position and the AA from that particular sequence
