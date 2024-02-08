@@ -56,7 +56,8 @@ def main():
 
     # Function is then called
     conserved_sites = get_conserved_sites(args.input, args.threshold)
-    print("Conserved sites:", conserved_sites)
+    print("There are", len(conserved_sites), "conserved aminoacids with a threshold of", args.threshold,":")
+    print(conserved_sites)
 
 if __name__ == "__main__":
     main()
