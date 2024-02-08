@@ -16,4 +16,4 @@ Pattern 2: LLALYTITQHLA
 
 Sequences: 3,7,8,10    
 Positions: 18-30
-Frequency: 40/10
+Frequency: 4/10

@@ -17,7 +17,7 @@ def get_conserved_sites(msa_file, threshold):
     aln_len = alignment.get_alignment_length()
 
     # Calculate conservation threshold
-    thres_val = threshold * aln_len
+    thres_val = threshold * aln_len # number of ocurrences needed to reach the threshold ex: 0.7*100 = 70 ocurrences threshold
 
     # Extract conserved sites
     conserved_sites = []
@@ -31,6 +31,7 @@ def get_conserved_sites(msa_file, threshold):
     for i in range(aln_len):
         max_conservation = max(conservation[i].values())
         if max_conservation >= thres_val:
+            print("Appending position", i,"")
             conserved_sites.append(i + 1)  # Convert to 1-based indexing
 
     return conserved_sites
