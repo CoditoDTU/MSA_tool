@@ -1,4 +1,4 @@
-name: MSA_tool
+name: msa_tool
 channels:
   #- pytorch
   - defaults
