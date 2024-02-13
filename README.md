@@ -7,4 +7,23 @@ ProteusAI tool developed by @Jonfunk21. The purpose of this project is to design
 This MSA tool has been tested using Ubuntu 22.04 and MacOS 10.13.6 High sierra. It should therfore work in any linux-based system that has Python installed(Normally built in).
 
 ## Dependencies 
+* Python >= 3.8
 
+(older versions may work but have not been tested)
+
+## Installation
+It is recommended that for proper use or installation of the MSA tool Conda is installed and set up a conda environment using the .yml file.
+
+### Conda 
+Conda is an open-source package management and environment system which allows easy install, run and update software packages and their respective dependencies. Mini conda is the Conda installer recommended and the one used for this project. Follow the installation instruction in their webpage [here](https://conda.io/projects/conda/en/latest/user-guide/install/index.html) 
+
+
+### Creating Conda environment
+
+To create a new Conda environment open your terminal and first download the repository and enter the project:
+
+```
+git clone https://github.com/CoditoDTU/MSA_tool
+cd path/to/MSA_tool
+
+```
