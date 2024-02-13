@@ -25,5 +25,17 @@ To create a new Conda environment open your terminal and first download the repo
 ```
 git clone https://github.com/CoditoDTU/MSA_tool
 cd path/to/MSA_tool
+```
+
+Afterwards, you can create the Conda environment using the environment.yml file which has every package and dependency you need. The name of the environment created will be "msa_tool".
 
 ```
+conda env create -f environment.yml 
+conda activate msa_tool
+```
+To check wether you are in the correct environment you can use the following command:
+
+```
+conda env list
+```
+This will show you the list of all your environments and show you which are you currently using denoted by an (*).
