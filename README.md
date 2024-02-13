@@ -39,3 +39,16 @@ To check wether you are in the correct environment you can use the following com
 conda env list
 ```
 This will show you the list of all your environments and show you which are you currently using denoted by an (*).
+
+# Python & .sh modules(Work in progress)
+
+
+### Running bash scripts
+While trying to run bash scripts your equipment may not run without the proper activation of the files. Therefore, in order to make them executable follow the next commands:
+
+```
+chmod u+x your_bash_file.sh # Makes the file executable
+./your_bash_file.sh <PLACEHOLDER_ARGUMENTS> # Runs the executable .sh files
+```
+
+## Filter module(filter sh)
