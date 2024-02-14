@@ -2,7 +2,7 @@ import argparse
 from Bio import AlignIO
 from Bio.Align import AlignInfo
 import numpy as np
-
+from Bio import SeqIO
 
 def get_conserved_sites(msa_file, threshold):
     
@@ -45,19 +45,65 @@ def get_conserved_sites(msa_file, threshold):
 
     results = np.array([conserved_keys, conserved_pos, conserved_prob]).T
     return results
+
+
+
+def map_conserved_sites(original_fasta_file, conserved_sites, msa_file):
+    # Read the original FASTA file
+    sequences = SeqIO.to_dict(SeqIO.parse(original_fasta_file, "fasta"))
+
+    # Find the first sequence dynamically
+    first_sequence_name = next(iter(sequences))
+
+    # Convert first sequence to string
+    seq1 = str(sequences[first_sequence_name].seq)
+
+    # Read the MSA file to count gaps in the first sequence
+    with open(msa_file, 'r') as f:
+        msa_record = next(SeqIO.parse(f, 'fasta'))
+        msa_seq1 = str(msa_record.seq)
+
+   # Convert position from conserved_sites to an integer
+    last_conserved_pos = int(conserved_sites[-1][1]) #[-1]: This accesses the last element in the list  [1]: This accesses the second element of the inner list, which corresponds to the position of the conserved site.
+
+    # Count gaps in the first sequence of the MSA
+
+    gap_count = msa_seq1[:last_conserved_pos].count('-')
+
+    # Initialize list to store mapped conserved sites
+    mapped_conserved_sites = []
+
+    # Map conserved sites to the original sequence
+    for conserved_site in conserved_sites:
+        conserved_aa, conserved_pos, conserved_prob = conserved_site
+        conserved_pos = int(conserved_pos)
+
+        # Adjust the position based on the number of gaps
+        mapped_pos = conserved_pos - gap_count
+
+        # Append mapped conserved site to the list
+        mapped_conserved_sites.append([conserved_aa, mapped_pos, conserved_prob])
+
+    return mapped_conserved_sites
+
+
+
 def main():
     
     #Argument parser
     parser = argparse.ArgumentParser(description = "Extract conserved regions from MSA file")
     parser.add_argument("-i", "--input", required = True, help  = "Input MSA file (in FASTA format)")
     parser.add_argument("-t", "--threshold", required = True, type = float, help = "Conservation threshold (between 0 and 1)")
+    parser.add_argument("-f", "--fasta", required = True,  help = "Original fasta file before the MSA")
     
     args = parser.parse_args()
 
     # Function is then called
     conserved_sites = get_conserved_sites(args.input, args.threshold)
+    conserved_sites_os = map_conserved_sites(args.fasta, conserved_sites, args.input)
     print("There are", len(conserved_sites), "conserved aminoacids with a threshold of", args.threshold,":")
     print(conserved_sites)
+    print(conserved_sites_os)
 
 if __name__ == "__main__":
     main()
