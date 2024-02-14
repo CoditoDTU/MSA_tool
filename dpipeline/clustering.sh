@@ -1,23 +1,79 @@
 #!/bin/bash
+clustering() {
+    local prefix="test"
+    local input_file=""
+    local output_path="."
 
-# Create a temporary directory with a clear name
-tmp_dir=$(mktemp -d mmseqs_tmp.XXXXXX)
+    #Usage function for help
+    usage() {
+        echo "Usage: $0 [-p <prefix>] [-i <input_file>] [-o <output_path>]"
+        echo "Options:"
+        echo "  -p <prefix>        Specify a prefix for the output files (default: gb1)"
+        echo "  -i <input_file>    Specify the input FASTA file"
+        echo "  -o <output_path>   Specify the output location with a path (default: current directory)"
+        exit 1
+    }
+    
+    #Parse command line options
 
-# Trap to clean up temporary files on exit
-trap 'rm -rf "$tmp_dir"' EXIT
+    while getopts ":p:i:o:h" opt; do
+        case ${opt} in
+            p )
+                prefix="$OPTARG"
+                ;;
+            i ) 
+                input_file="$OPTARG"
+                ;;
+            o )
+                output_path="$OPTARG"
+                ;;
+            h ) 
+                usage
+                ;;
+            \? )
+                echo "Invalid option: $OPTARG" 1>&2 # Redirects to the standar erros stream instead of the stdout
+                exit 1
+                ;;
+            : )
+                echo "Invalid option: $OPTARG requires an argument" 1>&2
+                exit 1
+                ;;
+        esac
+    done
+    shift $((OPTIND -1)) # what is this?
 
-# Convert FASTA to MMseqs2 database
-mmseqs createdb gb1.fasta gb1_DB
+    # Check if input file is provided
+    if [ -z "$input_file" ]; then
+        echo "Error: Input file is required" 1>&2
+        usage
+    fi 
 
-# Cluster sequences
-mmseqs cluster gb1_DB gb1_clu "$tmp_dir" --min-seq-id 0.7
+    # Check if input file exists
+    if [ ! -f "$input_file" ]; then
+        echo "Error: Input file '$input_file' not found" 1>&2 
+        exit 1
+    fi
 
-# Create sequence files from clusters
-mmseqs createseqfiledb gb1_DB gb1_clu gb1_clu_seq
+    # Create temp directory for intermediate files
+    local tmp_dir
+    tmp_dir=$(mktemp -d mmseqs_tmp.XXXXXX) # why the XXX
+    
+    # Trap to clean up temporary files on exit
+    trap rm -rf "$tmp_dir" EXIT
+    
+    # Main functionality
 
-# Move desired output files from the temporary directory (if needed)
-mv "$tmp_dir/required_output_file" .  # Replace with actual file names
-mv "$tmp_dir/another_output_file" .
+    # Fasta -> MMseqs2 DB
+    mmseqs createdb "$input_file" "$tmp_dir/${prefix}_DB"
 
-# Clean up any remaining temporary files (optional)
-rm -rf "$tmp_dir"
+    # Cluster sequences
+    mmseqs cluster "$tmp_dir/${prefix}_DB" "$tmp_dir/${prefix}_clu" "$tmp_dir" --min-seq-id 0.7
+
+    # Create sequence files from clusters
+    mmseqs createseqfiledb "$tmp_dir/${prefix}_DB" "$tmp_dir/${prefix}_clu" "$output_path/${prefix}_clu_seq"
+
+    #clean tmp dir
+    rm -rf "tmp_dir"
+}
+
+clustering "$@"
