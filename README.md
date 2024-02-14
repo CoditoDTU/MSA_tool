@@ -51,4 +51,4 @@ chmod u+x your_bash_file.sh # Makes the file executable
 ./your_bash_file.sh <PLACEHOLDER_ARGUMENTS> # Runs the executable .sh files
 ```
 
-## Filter module(filter sh)
+## Filter module(filter.sh)
