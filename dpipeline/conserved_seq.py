@@ -29,13 +29,7 @@ def get_conserved_sites(msa_file, threshold):
     conserved_pos = [] #positions
     conserved_keys = [] #AA letter
     conserved_prob = [] # %of conservation Ex: 0.7 = 7/10
-    '''
-    for position in conservation:
-        if conservation[position] >= thres_val:
-            conserved_sites.append(position + 1) # Convert to 1-based indexing
     
-    #return conserved_sites
-    ''' 
     for i in range(aln_len):
         max_conservation = max(conservation[i].values()) # Most present amino acid in each position number 
         max_key = max(conservation[i], key = conservation[i].get) # Gets letter from the most present aminoacid in position
