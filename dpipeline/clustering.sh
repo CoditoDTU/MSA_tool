@@ -73,7 +73,7 @@ clustering() {
     mmseqs createseqfiledb "$tmp_dir/${prefix}_DB" "$tmp_dir/${prefix}_clu" "$output_path/${prefix}_clu_seq"
 
     #clean tmp dir
-    rm -rf "tmp_dir"
+    rm -rf "$tmp_dir"
 }
 
 clustering "$@"
