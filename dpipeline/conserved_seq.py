@@ -3,6 +3,7 @@ from Bio import AlignIO
 from Bio.Align import AlignInfo
 import numpy as np
 from Bio import SeqIO
+import pandas as pd
 
 def get_conserved_sites(msa_file, threshold):
     
@@ -63,13 +64,6 @@ def map_conserved_sites(original_fasta_file, conserved_sites, msa_file):
         msa_record = next(SeqIO.parse(f, 'fasta'))
         msa_seq1 = str(msa_record.seq)
 
-   # Convert position from conserved_sites to an integer
-    last_conserved_pos = int(conserved_sites[-1][1]) #[-1]: This accesses the last element in the list  [1]: This accesses the second element of the inner list, which corresponds to the position of the conserved site.
-
-    # Count gaps in the first sequence of the MSA
-
-    gap_count = msa_seq1[:last_conserved_pos].count('-')
-
     # Initialize list to store mapped conserved sites
     mapped_conserved_sites = []
 
@@ -78,7 +72,15 @@ def map_conserved_sites(original_fasta_file, conserved_sites, msa_file):
         conserved_aa, conserved_pos, conserved_prob = conserved_site
         conserved_pos = int(conserved_pos)
 
+        # Initialize gap count
+        gap_count = 0
+
         # Adjust the position based on the number of gaps
+        for i in range(conserved_pos):
+            if msa_seq1[i] == '-':
+                gap_count += 1
+        
+        # Calculate mapped position
         mapped_pos = conserved_pos - gap_count
 
         # Append mapped conserved site to the list
@@ -101,9 +103,10 @@ def main():
     # Function is then called
     conserved_sites = get_conserved_sites(args.input, args.threshold)
     conserved_sites_os = map_conserved_sites(args.fasta, conserved_sites, args.input)
-    print("There are", len(conserved_sites), "conserved aminoacids with a threshold of", args.threshold,":")
-    print(conserved_sites)
-    print(conserved_sites_os)
+    #print("There are", len(conserved_sites), "conserved aminoacids with a threshold of", args.threshold,":")
+    #print(conserved_sites)
+    df_conserved = pd.DataFrame(conserved_sites_os, columns=['Residue', 'Position', 'conservation'])
+    print(df_conserved)
 
 if __name__ == "__main__":
     main()
