@@ -29,7 +29,7 @@ def get_conserved_sites(msa_file, threshold):
     conserved_pos = [] #positions
     conserved_keys = [] #AA letter
     conserved_prob = [] # %of conservation Ex: 0.7 = 7/10
-    
+
     for i in range(aln_len):
         max_conservation = max(conservation[i].values()) # Most present amino acid in each position number 
         max_key = max(conservation[i], key = conservation[i].get) # Gets letter from the most present aminoacid in position
@@ -85,25 +85,25 @@ def map_conserved_sites(original_fasta_file, conserved_sites, msa_file):
 
 
 def main():
-    
-    #Argument parser
-    parser = argparse.ArgumentParser(description = "Extract conserved regions from MSA file")
-    parser.add_argument("-i", "--input", required = True, help  = "Input MSA file (in FASTA format)")
-    parser.add_argument("-t", "--threshold", required = True, type = float, help = "Conservation threshold (between 0 and 1)")
-    parser.add_argument("-f", "--fasta", required = True,  help = "Original fasta file before the MSA")
-    
+    parser = argparse.ArgumentParser(description="Extract conserved regions from MSA file")
+    parser.add_argument("-i", "--input", required=True, help="Input MSA file (in FASTA format)")
+    parser.add_argument("-t", "--threshold", required=True, type=float, help="Conservation threshold (between 0 and 1)")
+    parser.add_argument("-f", "--fasta", required=True, help="Original fasta file before the MSA")
+    parser.add_argument("-o", "--output", required=True, help="Output file path")
     args = parser.parse_args()
 
-    # Function is then called
     conserved_sites = get_conserved_sites(args.input, args.threshold)
     conserved_sites_os = map_conserved_sites(args.fasta, conserved_sites, args.input)
-    #print("There are", len(conserved_sites), "conserved aminoacids with a threshold of", args.threshold,":")
-    #print(conserved_sites)
+
+    # Create DataFrame
     df_conserved = pd.DataFrame(conserved_sites_os, columns=['Residue', 'Position', 'conservation'])
-    print(df_conserved)
+
+    # Write DataFrame to a text file
+    df_conserved.to_csv(args.output, sep='\t', index=False)  # Change separator and file format as needed
 
 if __name__ == "__main__":
     main()
+
 
 # Comments from 07/02:
 # Calculate amount of sequences first to know how many there are as the matrix does not contain that 
