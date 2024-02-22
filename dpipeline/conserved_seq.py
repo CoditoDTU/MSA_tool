@@ -70,7 +70,7 @@ def map_conserved_sites(original_fasta_file, conserved_sites, msa_file):
         gap_count = 0
 
         # Adjust the position based on the number of gaps
-        for i in range(conserved_pos):
+        for i in range(conserved_pos): # How many gaps until that particular position
             if msa_seq1[i] == '-':
                 gap_count += 1
         
