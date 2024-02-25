@@ -8,7 +8,7 @@ perform_msa() {
     local prefix="$3"
     local cluster_number="$4"
 
-    local input_file="$folder_path${prefix}_clu_seq.$cluster_number"
+    local input_file="$folder_path${prefix}_clu_seq.$cluster_number" # .seq file which corresponds to Cluster 
     local output_file="$folder_path${prefix}_MSA_cluster${cluster_number}.fasta"
 
     echo "Processing file: $input_file"
