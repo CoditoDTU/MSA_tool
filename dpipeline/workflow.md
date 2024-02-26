@@ -26,7 +26,6 @@ Drop.sh((6)) --->  Drop columns assigned as gaps from the MSAs                  
 
 ## Pipeline_B: Full MSA for VAE training + Cons_analysis
 
-```markdown
 → ObtainIDs.sh (Fasta seq) ---> .hmm file(a) + FamilyID(b)                      (1)
 → Getdb.sh ((1b)) ---> .Fasta file with all sequences associated with Family ID (2)
 → filter.sh ((2)) ---> Filetered sequences with an # length of filtering        (3)
