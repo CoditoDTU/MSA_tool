@@ -6,7 +6,16 @@ from Bio import SeqIO
 import pandas as pd
 
 def get_conserved_sites(msa_file, threshold):
-    
+    """
+    Extracts conserved sites from the multiple sequence alignment (MSA).
+
+    Parameters:
+        msa_file (str): Path to the input MSA file (in FASTA format).
+        threshold (float): Conservation threshold (between 0 and 1).
+
+    Returns:
+        numpy.array: Array containing conserved sites with columns for residue, position, and conservation.
+    """
     # Read the MSA file
     alignment = AlignIO.read(msa_file, "fasta")
 
@@ -43,20 +52,22 @@ def get_conserved_sites(msa_file, threshold):
 
 
 
-def map_conserved_sites(original_fasta_file, conserved_sites, msa_file):
-    # Read the original FASTA file
-    sequences = SeqIO.to_dict(SeqIO.parse(original_fasta_file, "fasta"))
+def map_conserved_sites(conserved_sites, msa_file):
+    """
+    Maps conserved sites to the original sequence in the MSA file.
 
-    # Find the first sequence dynamically
-    first_sequence_name = next(iter(sequences))
+    Parameters:
+        conserved_sites (numpy.array): Array containing conserved sites with columns for residue, position, and conservation.
+        msa_file (str): Path to the input MSA file (in FASTA format).
 
-    # Convert first sequence to string
-    seq1 = str(sequences[first_sequence_name].seq)
+    Returns:
+        list: List containing mapped conserved sites with columns for residue, position, and conservation.
+    """
+    # Read the MSA file
+    alignment = AlignIO.read(msa_file, "fasta")
 
-    # Read the MSA file to count gaps in the first sequence
-    with open(msa_file, 'r') as f:
-        msa_record = next(SeqIO.parse(f, 'fasta'))
-        msa_seq1 = str(msa_record.seq)
+    # Get the first sequence (original sequence)
+    original_seq = str(alignment[0].seq)
 
     # Initialize list to store mapped conserved sites
     mapped_conserved_sites = []
@@ -66,44 +77,30 @@ def map_conserved_sites(original_fasta_file, conserved_sites, msa_file):
         conserved_aa, conserved_pos, conserved_prob = conserved_site
         conserved_pos = int(conserved_pos)
 
-        # Initialize gap count
-        gap_count = 0
-
-        # Adjust the position based on the number of gaps
-        for i in range(conserved_pos): # How many gaps until that particular position
-            if msa_seq1[i] == '-':
-                gap_count += 1
-        
-        # Calculate mapped position
-        mapped_pos = conserved_pos - gap_count
-
-        # Append mapped conserved site to the list
-        mapped_conserved_sites.append([conserved_aa, mapped_pos, conserved_prob])
+        # Check if the conserved position exists in the original sequence
+        if original_seq[conserved_pos - 1] == conserved_aa:
+            mapped_conserved_sites.append([conserved_aa, conserved_pos, conserved_prob])
 
     return mapped_conserved_sites
-
-
 
 def main():
     parser = argparse.ArgumentParser(description="Extract conserved regions from MSA file")
     parser.add_argument("-i", "--input", required=True, help="Input MSA file (in FASTA format)")
     parser.add_argument("-t", "--threshold", required=True, type=float, help="Conservation threshold (between 0 and 1)")
-    parser.add_argument("-f", "--fasta", required=True, help="Original fasta file before the MSA")
     parser.add_argument("-o", "--output", required=True, help="Output file path")
     args = parser.parse_args()
 
     conserved_sites = get_conserved_sites(args.input, args.threshold)
-    conserved_sites_os = map_conserved_sites(args.fasta, conserved_sites, args.input)
+    conserved_sites_os = map_conserved_sites(conserved_sites, args.input)
 
     # Create DataFrame
-    df_conserved = pd.DataFrame(conserved_sites_os, columns=['Residue', 'Position', 'conservation'])
+    df_conserved = pd.DataFrame(conserved_sites_os, columns=['Residue', 'Position', 'Conservation'])
 
     # Write DataFrame to a text file
-    df_conserved.to_csv(args.output, sep='\t', index=False)  # Change separator and file format as needed
+    df_conserved.to_csv(args.output, sep='\t', index=False) # Change separator and file format as needed
 
 if __name__ == "__main__":
     main()
-
 
 # Comments from 07/02:
 # Calculate amount of sequences first to know how many there are as the matrix does not contain that 
