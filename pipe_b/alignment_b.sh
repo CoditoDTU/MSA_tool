@@ -1,16 +1,20 @@
 #!/bin/bash
 
+
 # Function to perform MSA for a given fasta file
 perform_msa() {
     local input_file="$1"
     local hmm_file="$2"
     local og_sequence_file="$3"
 
+    # Remove ".fasta" extension from the input file name
+    local input_file_name="${input_file%.fasta}"
+
     # Call Python script to add OG sequence
-    python3 add_ogseq.py -i "$input_file" -o "${input_file}_with_og.fasta" -f "$og_sequence_file"
+    python3 add_ogseq.py -i "$input_file" -o "${input_file_name}_with_og.fasta" -f "$og_sequence_file"
 
     # Perform MSA using ClustalOmega
-    clustalo -i "${input_file}_with_og.fasta" --hmm-in "$hmm_file" -o "${input_file}_aligned.fasta"
+    clustalo -i "${input_file_name}_with_og.fasta" --hmm-in "$hmm_file" -o "${input_file_name}_aligned.fasta"
 
     echo "MSA completed for $input_file."
 }
