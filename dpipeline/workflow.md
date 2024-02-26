@@ -25,11 +25,12 @@ Drop.sh((6)) --->  Drop columns assigned as gaps from the MSAs                  
 
 ```
 ## Pipeline_B: Full MSA for VAE training + Cons_analysis
+```markdown
 → ObtainIDs.sh (Fasta seq) ---> .hmm file(a) + FamilyID(b)                      (1)
 → Getdb.sh ((1b)) ---> .Fasta file with all sequences associated with Family ID (2)
 → filter.sh ((2)) ---> Filetered sequences with an # length of filtering        (3)
 → AddOgSeq ((3)) ---> Filtered fasta + og seq in first position                 (4)
 → Alignment.sh ((4)+(1a)) ---> Big MSA file                                     (5)
 → Cons_analysis ((5)) ---> List of conserved residues from OG sequence          (6)
-
+```
 *Alignment.sh in PA should include a search algorithm for the OG sequence to select the clusters
