@@ -14,16 +14,13 @@ usage() {
 prefix="tryp"  # Default prefix
 
 # Parse command-line options
-while getopts ":i:p:t:" opt; do
+while getopts ":i:p:" opt; do
     case $opt in
         i)
             folder_path="$OPTARG"   # Store the provided folder path
             ;;
         p)
             prefix="$OPTARG"   # Store the provided prefix
-            ;;
-        t)
-            threshold="$OPTARG"   # Store the provided prefix
             ;;
         \?)
             echo "Invalid option: -$OPTARG" >&2
@@ -46,7 +43,7 @@ for file in "$folder_path"/"${prefix}"_clu_seq*_og_aligned.fasta; do
         cluster_number=$(echo "$file" | grep -oP "(?<=${prefix}_clu_seq)[0-9]+")
 
         # Run the Python script for the current file
-        python3 conserved_seq_b.py -i "$file" -t "$threshold" -o "$folder_path/${prefix}_clu_${cluster_number}_cs.txt"
+        python3 conserved_seq_b.py -i "$file" -o "$folder_path/${prefix}_clu_${cluster_number}_cs.csv"
 
         echo "Python script executed for $file"
     else
