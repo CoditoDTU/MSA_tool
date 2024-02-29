@@ -75,7 +75,7 @@ def main():
     df_conservation = calculate_conservation(args.input)
     
     # Save the DataFrame to the output file path
-    df_conservation.to_csv(args.output, sep='\t', index=False)
+    df_conservation.to_csv(args.output, sep=',', index=False)
 
 if __name__ == "__main__":
     main()
