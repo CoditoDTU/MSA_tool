@@ -17,14 +17,14 @@ convert_seq_to_fasta() {
 
 # Function to add OG sequence to the modified FASTA file
 select_cluster_withOG() {
-    local fasta_file="$1"      # Path to the modified FASTA file
+    local input_file="$1"      # Path to FASTA file which may contain the og seq
     local og_sequence_file="$2"  # Path to the OG sequence file
-    local temp_input_file="$3"  # Temporary copy of the original FASTA file
+    local output_file="$3"  # File with the 
 
     # Call Python script to add OG sequence
-    python3 add_ogseq.py -i "$fasta_file" -o "$temp_input_file" -f "$og_sequence_file"
+    python3 move_og.py -i "$input_file" -o "$output_file" -f "$og_sequence_file"
     
-    rm "$fasta_file"
+    rm "$input_file"
 }
 
 
@@ -90,13 +90,15 @@ for file in "$folder_path/${prefix}_clu_seq".*; do
 
     # Check if the cluster number is valid (non-empty and numerical)
     if [[ -n "$cluster_number" ]] && [[ "$cluster_number" =~ ^[0-9]+$ ]]; then
+       
         # Convert sequence file to FASTA format
         fasta_file="$folder_path/${prefix}_clu_seq${cluster_number}.fasta"
         convert_seq_to_fasta "$file" "$fasta_file" "$folder_path"
 
         fasta_fileog="$folder_path/${prefix}_clu_seq${cluster_number}_og.fasta"
-        # Add OG sequence to the FASTA file
-        #add_og_sequence "$fasta_file" "$og_sequence_file" "$fasta_fileog"
+        
+        # Check if cluster has the og seq and take it to the first position
+        select_cluster_withOG "$fasta_file" "$og_sequence_file" "$fasta_fileog"
 
         
         # Perform MSA on the modified FASTA file
