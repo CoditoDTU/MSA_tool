@@ -3,7 +3,7 @@
 
 ```mermaid
     flowchart LR
-    QuerySequence
+    input((Query Sequence))
 
     subgraph A[GetIDs.sh]
         direction TB
@@ -29,16 +29,14 @@
     end
     
     cons(Conservation analysis)
-    output(.csv file)
+    output((.csv file))
 
-    QuerySequence --> A 
-    
-   
+    input --> A 
 
     A--ProteinID--> B 
     B --> C
     C--> Clustering.sh 
-    Clustering.sh --{11 clusters}--> D
+    Clustering.sh --|11 clusters|--> D
     D --> cons --> output
 ```
 
