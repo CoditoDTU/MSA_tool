@@ -20,7 +20,7 @@ def print_json_structure(data, indent=2):
         print(data)
 
 # Replace 'your_file.json' with the path to your JSON file
-with open('Tryp_search_result.json', 'r') as file:
+with open('Tryp_search_result.json', 'r') as file: 
     json_data = json.load(file)
 
 print_json_structure(json_data)
