@@ -2,45 +2,45 @@
 
 # Function to convert a sequence file to FASTA format
 convert_seq_to_fasta() {
-    local input_file="$1"  # Input sequence file
-    local output_file="$2"  # Output FASTA file
+    local input_sequence_file="$1"  # Input sequence file
+    local output_fasta_file="$2"  # Output converted FASTA file
 
     # Replace the beginning of each sequence with ">"
-    sed 's/^.*>/>/' "$input_file" > "$output_file"
+    sed 's/^.*>/>/' "$input_sequence_file" > "$output_fasta_file"
 
     # Remove the last line (usually contains a single character)
-    sed -i '$d' "$output_file"
+    sed -i '$d' "$output_fasta_file"
 
-    rm "$input_file"
+    rm "$input_sequence_file"
 }
 
 
 # Function to add OG sequence to the modified FASTA file
 add_og_sequence() {
-    local fasta_file="$1"      # Path to the modified FASTA file
+    local inputFastaWithoutOG="$1"  # Path to the FASTA file without OG sequence
     local og_sequence_file="$2"  # Path to the OG sequence file
-    local temp_input_file="$3"  # Temporary copy of the original FASTA file
+    local outputFastaWithOG="$3"  #  FASTA file with OG sequence added
 
     # Call Python script to add OG sequence
-    python3 add_ogseq.py -i "$fasta_file" -o "$temp_input_file" -f "$og_sequence_file"
+    python3 add_ogseq.py -i "$inputFastaWithoutOG" -o "$outputFastaWithOG" -f "$og_sequence_file"
     
-    rm "$fasta_file"
+    rm "$inputFastaWithoutOG"
 }
 
 
 
 # Function to perform MSA for a given cluster
 perform_msa() {
-    local fasta_file="$1"  # Path to the modified FASTA file
+    local clusterFastaWithOGSequence="$1"  # Path to cluster fasta with OG
     local hmm_file="$2"    # Path to the HMM file
     # Remove ".fasta" extension from the input file name
-    local input_file_name="${fasta_file%.fasta}"
+    local inputClusterNameNoExtension="${clusterFastaWithOGSequence%.fasta}"
 
     # Perform MSA using ClustalOmega
-    clustalo -i "$fasta_file" --hmm-in "$hmm_file" -o "${input_file_name}_aligned.fasta"
+    clustalo -i "$clusterFastaWithOGSequence" --hmm-in "$hmm_file" -o "${inputClusterNameNoExtension}_aligned.fasta"
 
     # Inform user that MSA for the cluster is completed
-    echo "MSA for file $fasta_file completed."
+    echo "MSA for file $clusterFastaWithOGSequence completed."
 }
 
 
@@ -90,17 +90,19 @@ for file in "$folder_path/${prefix}_clu_seq".*; do
 
     # Check if the cluster number is valid (non-empty and numerical)
     if [[ -n "$cluster_number" ]] && [[ "$cluster_number" =~ ^[0-9]+$ ]]; then
-        # Convert sequence file to FASTA format
-        fasta_file="$folder_path/${prefix}_clu_seq${cluster_number}.fasta"
-        convert_seq_to_fasta "$file" "$fasta_file" "$folder_path"
 
-        fasta_fileog="$folder_path/${prefix}_clu_seq${cluster_number}_og.fasta"
+        # Convert sequence file to FASTA format
+        clusterFastaName="$folder_path/${prefix}_clu_seq${cluster_number}.fasta"
+
+        convert_seq_to_fasta "$file" "$clusterFastaName" "$folder_path"
+
+        fastaWithOG_name="$folder_path/${prefix}_clu_seq${cluster_number}_og.fasta"
         # Add OG sequence to the FASTA file
-        add_og_sequence "$fasta_file" "$og_sequence_file" "$fasta_fileog"
+        add_og_sequence "$clusterFastaName" "$og_sequence_file" "$fastaWithOG_name"
 
         
         # Perform MSA on the modified FASTA file
-        perform_msa "$fasta_fileog" "$hmm_file" "$folder_path"
+        perform_msa "$fastaWithOG_name" "$hmm_file" "$folder_path"
     else
         echo "Skipping file $file as it does not match the expected pattern."
     fi
