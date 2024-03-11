@@ -1,0 +1,8 @@
+https://www.ebi.ac.uk/interpro/result/download/#/protein/UniProt/entry/InterPro/IPR033689/|fasta 
+
+BASE_URL = "https://www.ebi.ac.uk:443/interpro/api/protein/UniProt/entry/InterPro/IPR033689/?page_size=200&extra_fields=sequence"
+
+This is the url needed to download the data from Interpro database from the IPR033689 family in a fasta format.
+This url is used as a base for the python script.
+
+Find A way into looking at only changing the the necessary arguments such as family id and make a script that gives the python script that missing data to perform the download.
