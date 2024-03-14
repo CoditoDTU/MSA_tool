@@ -6,3 +6,6 @@ This is the url needed to download the data from Interpro database from the IPR0
 This url is used as a base for the python script.
 
 Find A way into looking at only changing the the necessary arguments such as family id and make a script that gives the python script that missing data to perform the download.
+
+
+https://www.ebi.ac.uk/interpro/wwwapi//entry/pfam/PF00389?annotation=hmm FOR hmms
