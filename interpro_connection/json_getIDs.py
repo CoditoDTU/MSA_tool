@@ -58,8 +58,8 @@ def main():
     protIDs = get_prot_IDs(data_interpro_json)
     # Gets Hmm IDs
     hmmIds = get_hmm_IDs(data_interpro_json)
-    print(protIDs[0])
-    print(hmmIds[0])
-
+    #print(protIDs[0],hmmIds[0] )
+    print(protIDs[0], hmmIds[0])
+    
 if __name__ == "__main__":
-    main()
+   main()
