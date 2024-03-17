@@ -7,20 +7,24 @@ from urllib import request
 from urllib.error import HTTPError
 from time import sleep
 
-BASE_URL = "https://www.ebi.ac.uk:443/interpro/api/protein/UniProt/entry/InterPro/IPR001314/?page_size=200&extra_fields=sequence"
 
-def get_url_name(protein_ID, hmm_ID):
-  
-  return
+def get_url_name(protein_ID):#, hmm_ID):
+
+  # Template URL from interpro script
+  BASE_URL = "https://www.ebi.ac.uk:443/interpro/api/protein/UniProt/entry/InterPro/{}/?page_size=200&extra_fields=sequence" 
+
+  # Replaces the {} with the protein_ID variable which corresponds to the string id like IPR0...
+  protein_ID_url = BASE_URL.format(protein_ID) 
+  return protein_ID_url
 
 
-def output_list():
+def output_list(required_url):
   HEADER_SEPARATOR = "|"
   LINE_LENGTH = 80
   #disable SSL verification to avoid config issues
   context = ssl._create_unverified_context()
 
-  next = BASE_URL
+  next = required_url
   last_page = False
 
   
@@ -99,7 +103,10 @@ def main():
   parser.add_argument("-i", "--input_file", required=True, help="String names of family ID and hmm ID")
   args = parser.parse_args()
   
-  #output_list() 
+  
+  url = get_url_name(args.input_file)
+  print(url)
+  #output_list(url)  #Commented as It already worked
 
 
 if __name__ == "__main__":
