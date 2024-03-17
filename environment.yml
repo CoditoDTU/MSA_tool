@@ -19,3 +19,4 @@ dependencies:
   - optuna
   - seaborn
   - openpyxl
+  - xmltramp2
