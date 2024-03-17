@@ -2,8 +2,8 @@ name: msa_tool
 channels:
   #- pytorch
   - defaults
+  - bioconda
   - conda-forge
-  - Bioconda
 dependencies:
   - python=3.8
   #- torch
@@ -19,3 +19,4 @@ dependencies:
   - optuna
   - seaborn
   - openpyxl
+  - xmltramp2
