@@ -1,114 +1,81 @@
 import argparse
 from Bio import AlignIO
 from Bio.Align import AlignInfo
-import numpy as np
-from Bio import SeqIO
+import pandas as pd
 
-def get_conserved_sites(msa_file, threshold):
-    
+def calculate_conservation(msa_file):
+    """
+    Calculates the percentage of conservation of each residue from the first sequence in the alignment across all sequences in the MSA, excluding gaps.
+
+    Parameters:
+        msa_file (str): Path to the input MSA file (in FASTA format).
+
+    Returns:
+        pandas.DataFrame: DataFrame containing the position, conserved residue, and percentage conservation of each residue.
+    """
     # Read the MSA file
     alignment = AlignIO.read(msa_file, "fasta")
 
+    # Get the first sequence (original sequence)
+    original_seq = str(alignment[0].seq)
+
     # Create an AlignInfo summary object
-    summary = AlignInfo.SummaryInfo(alignment) # obtains results from the aligment object created before
+    summary = AlignInfo.SummaryInfo(alignment)
 
-    # Calculate the conservation of each position in the aln
-    conservation = summary.pos_specific_score_matrix()
+    # Get the length of the alignment
+    alignment_length = alignment.get_alignment_length()
 
-    # Get the length of the Alignment(Positions length)
-    aln_len = alignment.get_alignment_length()
+    # Initialize lists to store conservation values
+    positions = []
+    conserved_residues = []
+    conservation_values = []
 
-    # Get number of sequences for threshold
-    sequence_number = len(alignment)
-
-    # Calculate conservation threshold
-    thres_val = threshold * sequence_number # number of ocurrences needed to reach the threshold ex: 0.7*100 = 70 ocurrences threshold
-
-    # Extract conserved sites
-    conserved_pos = [] #positions
-    conserved_keys = [] #AA letter
-    conserved_prob = [] # %of conservation Ex: 0.7 = 7/10
-    '''
-    for position in conservation:
-        if conservation[position] >= thres_val:
-            conserved_sites.append(position + 1) # Convert to 1-based indexing
+    # Iterate over each position in the alignment
+    for pos in range(alignment_length):
+        # Skip if the position in the original sequence is a gap
+        if original_seq[pos] == "-":
+            continue
+        
+        # Count occurrences of each residue at the current position
+        residue_counts = {}
+        for record in alignment:
+            residue = record.seq[pos]
+            if residue == "-":
+                continue
+            if residue in residue_counts:
+                residue_counts[residue] += 1
+            else:
+                residue_counts[residue] = 1
+        
+        # Calculate conservation for the current position
+        original_residue = original_seq[pos]
+        if original_residue in residue_counts:
+            conservation = residue_counts[original_residue] / len(alignment)
+        else:
+            conservation = 0
+        
+        # Add conserved residue information to lists
+        positions.append(pos + 1)  # Convert to 1-based indexing
+        conserved_residues.append(original_residue)
+        conservation_values.append(conservation)
     
-    #return conserved_sites
-    ''' 
-    for i in range(aln_len):
-        max_conservation = max(conservation[i].values()) # Most present amino acid in each position number 
-        max_key = max(conservation[i], key = conservation[i].get) # Gets letter from the most present aminoacid in position
-        if max_conservation >= thres_val:
-            conserved_pos.append(i+1) # Convert to 1-based indexing
-            conserved_keys.append(max_key)
-            conserved_prob.append(max_conservation/sequence_number) # returning it as a %
-
-    results = np.array([conserved_keys, conserved_pos, conserved_prob]).T
-    return results
-
-
-
-def map_conserved_sites(original_fasta_file, conserved_sites, msa_file):
-    # Read the original FASTA file
-    sequences = SeqIO.to_dict(SeqIO.parse(original_fasta_file, "fasta"))
-
-    # Find the first sequence dynamically
-    first_sequence_name = next(iter(sequences))
-
-    # Convert first sequence to string
-    seq1 = str(sequences[first_sequence_name].seq)
-
-    # Read the MSA file to count gaps in the first sequence
-    with open(msa_file, 'r') as f:
-        msa_record = next(SeqIO.parse(f, 'fasta'))
-        msa_seq1 = str(msa_record.seq)
-
-   # Convert position from conserved_sites to an integer
-    last_conserved_pos = int(conserved_sites[-1][1]) #[-1]: This accesses the last element in the list  [1]: This accesses the second element of the inner list, which corresponds to the position of the conserved site.
-
-    # Count gaps in the first sequence of the MSA
-
-    gap_count = msa_seq1[:last_conserved_pos].count('-')
-
-    # Initialize list to store mapped conserved sites
-    mapped_conserved_sites = []
-
-    # Map conserved sites to the original sequence
-    for conserved_site in conserved_sites:
-        conserved_aa, conserved_pos, conserved_prob = conserved_site
-        conserved_pos = int(conserved_pos)
-
-        # Adjust the position based on the number of gaps
-        mapped_pos = conserved_pos - gap_count
-
-        # Append mapped conserved site to the list
-        mapped_conserved_sites.append([conserved_aa, mapped_pos, conserved_prob])
-
-    return mapped_conserved_sites
-
-
+    # Create DataFrame
+    #df_conservation = pd.DataFrame({'Position': positions, 'Conserved Residue': conserved_residues, 'Conservation': conservation_values})
+    df_conservation = pd.DataFrame({'Conserved Residue': conserved_residues, 'Conservation': conservation_values})
+    return df_conservation
 
 def main():
-    
-    #Argument parser
-    parser = argparse.ArgumentParser(description = "Extract conserved regions from MSA file")
-    parser.add_argument("-i", "--input", required = True, help  = "Input MSA file (in FASTA format)")
-    parser.add_argument("-t", "--threshold", required = True, type = float, help = "Conservation threshold (between 0 and 1)")
-    parser.add_argument("-f", "--fasta", required = True,  help = "Original fasta file before the MSA")
-    
+    # Parse command-line arguments
+    parser = argparse.ArgumentParser(description="Calculate conservation of residues from the first sequence in the alignment")
+    parser.add_argument("-i", "--input", required=True, help="Input MSA file (in FASTA format)")
+    parser.add_argument("-o", "--output", required=True, help="Output file path")
     args = parser.parse_args()
 
-    # Function is then called
-    conserved_sites = get_conserved_sites(args.input, args.threshold)
-    conserved_sites_os = map_conserved_sites(args.fasta, conserved_sites, args.input)
-    print("There are", len(conserved_sites), "conserved aminoacids with a threshold of", args.threshold,":")
-    print(conserved_sites)
-    print(conserved_sites_os)
+    # Calculate conservation
+    df_conservation = calculate_conservation(args.input)
+    
+    # Save the DataFrame to the output file path
+    df_conservation.to_csv(args.output, sep=',', index=False)
 
 if __name__ == "__main__":
     main()
-
-# Comments from 07/02:
-# Calculate amount of sequences first to know how many there are as the matrix does not contain that 
-# High priority : Calculate position in the og sequence of the conserved 
-# Report the position and the AA from that particular sequence

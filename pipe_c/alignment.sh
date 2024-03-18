@@ -1,80 +1,109 @@
 #!/bin/bash
 
+# Function to convert a sequence file to FASTA format
+convert_seq_to_fasta() {
+    local input_file="$1"  # Input sequence file
+    local output_file="$2"  # Output FASTA file
+
+    # Replace the beginning of each sequence with ">"
+    sed 's/^.*>/>/' "$input_file" > "$output_file"
+
+    # Remove the last line (usually contains a single character)
+    sed -i '$d' "$output_file"
+
+    rm "$input_file"
+}
+
+
+# Function to add OG sequence to the modified FASTA file
+select_cluster_withOG() {
+    local input_file="$1"      # Path to FASTA file which may contain the og seq
+    local og_sequence_file="$2"  # Path to the OG sequence file
+    local output_file="$3"  # File with the 
+
+    # Call Python script to add OG sequence
+    python3 move_og.py -i "$input_file" -o "$output_file" -f "$og_sequence_file"
+    
+    rm "$input_file"
+}
+
+
+
 # Function to perform MSA for a given cluster
 perform_msa() {
-    # Local variables within function
-    local folder_path="$1"
-    local hmm_file="$2"
-    local prefix="$3"
-    local cluster_number="$4"
+    local fasta_file="$1"  # Path to the modified FASTA file
+    local hmm_file="$2"    # Path to the HMM file
+    # Remove ".fasta" extension from the input file name
+    local input_file_name="${fasta_file%.fasta}"
 
-    local input_file="$folder_path${prefix}_clu_seq.$cluster_number"
-    local output_file="$folder_path${prefix}_MSA_cluster${cluster_number}.fasta"
+    # Perform MSA using ClustalOmega
+    clustalo -i "$fasta_file" --hmm-in "$hmm_file" -o "${input_file_name}_aligned.fasta"
 
-    echo "Processing file: $input_file"
-    echo "Input file: $input_file"
-    echo "Output file: $output_file"
-
-    # Placeholder for the actual clustalo command
-    clustalo -i "$input_file" --hmm-in "$hmm_file" -o "$output_file"
-
-    echo "MSA for cluster $cluster_number completed."
+    # Inform user that MSA for the cluster is completed
+    echo "MSA for file $fasta_file completed."
 }
 
 
 # Function to display usage information
 usage() {
-    echo "Usage: $0 -hmm <hmm_file> -i <input_results_folder> -p <prefix>"
+    echo "Usage: $0 -H <hmm_file> -i <input_results_folder> -p <prefix> -f <og_sequence_file>"
     echo "Options:"
-    echo "  -h, --hmm        Path to the HMM file"
-    echo "  -i, --input      Path to the results folder ex: data/ do not forget the /"
-    echo "  -p, --prefix     Prefix for file matching"
-    echo "  -help            Display this help message"
-    exit 0  # Exit successfully after showing usage information
+    echo "  -H <hmm_file>: Path to the HMM file"
+    echo "  -i <input_results_folder>: Path to the results folder (e.g., data/)"
+    echo "  -p <prefix>: Prefix for file matching"
+    echo "  -f <og_sequence_file>: Path to the file containing the OG sequence"
+    exit 1
 }
 
-
 # Parse command-line options
-while getopts "h:i:p:" opt; do
+while getopts "H:i:p:f:" opt; do
     case $opt in
-        h)
-            hmm_file="$OPTARG"
+        H)
+            hmm_file="$OPTARG"   # Store the provided HMM file path
             ;;
         i)
-            folder_path="$OPTARG"
+            folder_path="$OPTARG"  # Store the provided input folder path
             ;;
         p)
-            prefix="$OPTARG"
+            prefix="$OPTARG"   # Store the provided prefix for file matching
+            ;;
+        f)
+            og_sequence_file="$OPTARG"  # Store the provided OG sequence file path
             ;;
         \?)
-            echo "Invalid option: -$OPTARG"
-            usage
+            echo "Invalid option: -$OPTARG" >&2
+            usage  # Display usage information if an invalid option is provided
             ;;
     esac
 done
 
-#checks whether the first command-line argument is equal to --help. 
-# If the user runs the script with --help, it triggers the usage function to display the help message.
-if [ "$1" == "--help" ]; then
-    usage
-fi
-
 # Check if the required options are provided
-if [ -z "$hmm_file" ] || [ -z "$folder_path" ] || [ -z "$prefix" ]; then
-    echo "Error: All options (-hmm, -i, -p) must be provided."
-    usage
+if [ -z "$hmm_file" ] || [ -z "$folder_path" ] || [ -z "$prefix" ] || [ -z "$og_sequence_file" ]; then
+    echo "Error: All options (-H, -i, -p, -f) must be provided."
+    usage  # Display usage information if any of the required options are missing
 fi
 
-# Loop through each file in the folder with the pattern ${prefix}_clu_seq.*
+# Loop through each file in the folder with the pattern ${prefix}_clu_seq*
 for file in "$folder_path/${prefix}_clu_seq".*; do
     # Extract cluster number from the file name
     cluster_number=$(basename "$file" | grep -oP "(?<=${prefix}_clu_seq\.)[0-9]+")
-    
+
     # Check if the cluster number is valid (non-empty and numerical)
     if [[ -n "$cluster_number" ]] && [[ "$cluster_number" =~ ^[0-9]+$ ]]; then
-        perform_msa "$folder_path" "$hmm_file" "$prefix" "$cluster_number"
+       
+        # Convert sequence file to FASTA format
+        fasta_file="$folder_path/${prefix}_clu_seq${cluster_number}.fasta"
+        convert_seq_to_fasta "$file" "$fasta_file" "$folder_path"
+
+        fasta_fileog="$folder_path/${prefix}_clu_seq${cluster_number}_og.fasta"
+        
+        # Check if cluster has the og seq and take it to the first position
+        select_cluster_withOG "$fasta_file" "$og_sequence_file" "$fasta_fileog"
+
+        
+        # Perform MSA on the modified FASTA file
+        perform_msa "$fasta_fileog" "$hmm_file" "$folder_path"
     else
         echo "Skipping file $file as it does not match the expected pattern."
     fi
 done
-
