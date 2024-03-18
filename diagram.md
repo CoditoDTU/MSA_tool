@@ -1,4 +1,4 @@
-# Dpipeline
+# Pipeline A
 
 
 ```mermaid
@@ -41,7 +41,54 @@
     D --> cons --> output
 ```
 
-# Pipeline A
+# Pipeline B
+```mermaid
+    flowchart LR
+    %% A = Getid
+    %% B = GetDB
+    %% C = Filter.sh
+    %% D = Alignment + Add ogseq
+    
+    input((Query Sequence))
+    %%A
+    subgraph A[GetIDs.sh]
+        direction TB
+        id3[(interpro)] -->.hmmFile
+        id3[(interpro)] -->ProteinID  
+    end 
+    %%B
+    subgraph B[GetDBs.sh]
+        direction TB
+        id4[(interpro)] -->
+        RawFasta 
+    end
+    %%C
+    subgraph C[filtering.sh]
+        direction TB
+        C1{Seq is longer than L?} -->  
+        FiltFasta
+    end
+    
+
+    %%D
+    subgraph D[Alignment.sh]
+        direction TB
+        D2[Add OG seq] -->
+        D3[MSA]
+    end
+    
+    cons(Conservation analysis)
+    output((Pipe B.csv file))
+
+    input --> A 
+    A--ProteinID--> B 
+    B --> C
+    C ---> D
+    A --|.hmm file|--> D
+    D --> cons --> output
+```
+
+# Pipeline C
 
 ```mermaid
     flowchart LR
@@ -98,50 +145,4 @@
     D --|11 clusters|--> E
     A --|.hmm file|--> E
     E --|Cluster with OG MSA|--> cons --> output
-```
-# Pipeline B
-```mermaid
-    flowchart LR
-    %% A = Getid
-    %% B = GetDB
-    %% C = Filter.sh
-    %% D = Alignment + Add ogseq
-    
-    input((Query Sequence))
-    %%A
-    subgraph A[GetIDs.sh]
-        direction TB
-        id3[(interpro)] -->.hmmFile
-        id3[(interpro)] -->ProteinID  
-    end 
-    %%B
-    subgraph B[GetDBs.sh]
-        direction TB
-        id4[(interpro)] -->
-        RawFasta 
-    end
-    %%C
-    subgraph C[filtering.sh]
-        direction TB
-        C1{Seq is longer than L?} -->  
-        FiltFasta
-    end
-    
-
-    %%D
-    subgraph D[Alignment.sh]
-        direction TB
-        D2[Add OG seq] -->
-        D3[MSA]
-    end
-    
-    cons(Conservation analysis)
-    output((Pipe B.csv file))
-
-    input --> A 
-    A--ProteinID--> B 
-    B --> C
-    C ---> D
-    A --|.hmm file|--> D
-    D --> cons --> output
 ```
