@@ -105,8 +105,8 @@ def main():
   
   
   url = get_url_name(args.input_file)
-  print(url)
-  #output_list(url)  #Commented as It already worked
+  #print(url)
+  output_list(url)  #Commented as It already worked
 
 
 if __name__ == "__main__":

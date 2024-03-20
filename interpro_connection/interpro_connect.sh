@@ -32,7 +32,7 @@ get_fasta() {
 
     
 
-     python3 Ipr_api_downform.py -i "$protein_ID" > "$protein_ID.fasta"
+     python3 Ipr_api_downform.py -i "$protein_ID" > "{$protein_ID}_raw.fasta"
      
 }
 
