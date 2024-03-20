@@ -15,44 +15,6 @@ usage() {
   exit 1
 }
 
-# MODULE 1: Iprscan5
-Interpro_scan(){
-    query_sequence=$1
-
-}
-# MODULE 2: Interpro connect
-
-Interpro_connection(){
-    json_file=$1
-}
-
-# MODULE 3: Filtering
-
-Filtering(){
-    local raw_fasta=$1
-    local filtering_length=$2
-    local raw_fasta_name="${raw_fasta%.fasta}"
-    
-    functions/filter.sh -i "$raw_fasta" -o "${raw_fasta_name}_filtered.fasta" -l "$filtering_length"
-}
-
-# MODULE 4: Clustering
-
-Clustering(){
-    filtered_fasta=$1
-    protein_prefix=$2
-}
-
-# MODULE 5: Alignment
-
-Alignment_A(){
-    path_to_clusters=$1
-    protein_prefix=$2
-    hmm_file=$3
-    og_sequence_file=$4
-}
-
-
 # MAIN FUNCTION
 
 main(){
