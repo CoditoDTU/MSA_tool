@@ -40,10 +40,10 @@ if [[ ! -f "$input_fasta" ]]; then
 fi
 
 # Call the Python filtering function
-python3 len_filt.py "$input_fasta" "$output_fasta" "$max_length"
+python3 functions/len_filt.py "$input_fasta" "$output_fasta" "$max_length"
 
 # Length verification of the output fasta
-python3 verify_lengths.py "$output_fasta"
+python3 functions/verify_lengths.py "$output_fasta"
 
 # Check if the filtered file was generated successfully
 if [[ -f "$output_fasta" ]]; then
