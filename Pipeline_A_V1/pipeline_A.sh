@@ -37,11 +37,11 @@ main(){
 
 
     # MODULE 1: IPRSCAN
-    echo python3 functions/iprscan.py --email rogall@dtu.dk --stype p --sequence "$input_sequence" --outfile "$prefix"
+    python3 functions/iprscan.py --email rogall@dtu.dk --stype p --sequence "$input_sequence" --outfile "$prefix"
 
     # MODULE 2: INTERPRO CONNECT
     json_file_name="data/${prefix}.json.json"
-    echo functions/interpro_connect.sh -i "$json_file_name" -o data 
+    functions/interpro_connect.sh -i "$json_file_name" -o data 
 
     ids=$(python3 functions/json_getIDs.py -i "$json_file_name") #Getting hmm ID name locally
     protein_ID=$(echo "$ids" | awk '{print $1}')
@@ -49,7 +49,6 @@ main(){
 
     # MODULE 3: FILTERING:
     filtered_fasta_name="data/${protein_ID%.fasta}_filtered.fasta" # Output name
-    echo "$filtered_fasta_name"
     functions/filter.sh -i "data/${protein_ID}_raw.fasta" -o "$filtered_fasta_name" -l "$max_length"
 
     # MODULE 4: CLUSTERING
