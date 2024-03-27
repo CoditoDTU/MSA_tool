@@ -20,3 +20,5 @@ dependencies:
   - seaborn
   - openpyxl
   - xmltramp2
+  - clustalo
+  - mmseqs2
