@@ -6,10 +6,11 @@
 
 # Help message function
 usage() {
-  echo "Usage: $0 -i <input_fasta> -o <output_fasta> -l <max_length>"
-  echo "Length-based filtering script for FASTA files."
+  echo "Usage: $0 -i <input_fasta> -p <prefix> -m <email> -l <max_length>"
+  echo "Data pipeline for sequences conservation analysis"
   echo "Options:"
   echo "  -i <input_fasta>: Input query fasta sequence"
+  echo "  -m <email>: Valid email ex: JhonDoe@gmail.com"
   echo "  -p <prefix>: Desired name for the protein prefix. Ex: Trypsin --> tryp"
   echo "  -l <max_length>: Maximum sequence length for filtering. Default at 504"
   exit 1
@@ -18,11 +19,14 @@ usage() {
 # MAIN FUNCTION
 
 main(){
+    # Initializing default parameters
+    max_length=504
     # Input arguments
-    while getopts ":i:p:l:h" opt; do
+    while getopts ":i:p:m:l:h" opt; do
     case $opt in
         i) input_sequence="$OPTARG" ;;
         p) prefix="$OPTARG" ;;
+        m) mail="$OPTARG" ;;
         l) max_length="$OPTARG" ;;
         h) usage ;;
         \?) echo "Invalid option -$OPTARG" >&2; usage ;;
@@ -37,7 +41,7 @@ main(){
 
 
     # MODULE 1: IPRSCAN
-    python3 functions/iprscan.py --email rogall@dtu.dk --stype p --sequence "$input_sequence" --outfile "$prefix"
+    python3 functions/iprscan.py --email "$mail" --stype p --sequence "$input_sequence" --outfile "$prefix"
 
     # MODULE 2: INTERPRO CONNECT
     json_file_name="data/${prefix}.json.json"
