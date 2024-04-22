@@ -42,7 +42,7 @@ for file in "$folder_path"/"${prefix}"_clu_seq*_og_aligned.fasta; do
         cluster_number=$(echo "$file" | grep -oP "(?<=${prefix}_clu_seq)[0-9]+")
 
         # Run the Python script for the current file
-        python3 functions/conserved_seq.py -i "$file" -o "$folder_path/${prefix}_clu_${cluster_number}_cs.csv"
+        python3 functions/conserved_seq.py -i "$file" -o "$folder_path/${prefix}_clu_${cluster_number}_A_cs.csv"
 
         echo "Conservation analysis executed for $file"
     else
