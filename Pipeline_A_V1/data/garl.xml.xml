@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8"?><protein-matches xmlns="https://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/schemas" interproscan-version="5.67-99.0">
+  <protein>
+    <sequence md5="638f804e06ce31fe602a43c2d4c5e6b4">MNNDVFPNKFKAALAAKQVQIGCWSALSNPISTEVLGLAGFDWLVLDGEHAPNDISTFIPQLMALKGSASAPVVRVPTNEPVIIKRLLDIGFYNFLIPFVETKEEAELAVASTRYPPEGIRGVSVSHRANMFGTVADYFAQSNKNITILVQIESQQGVDNVDAIAATEGVDGIFVGPSDLAAALGHLGNASHPDVQKAIQHIFNRASAHGKPSGILAPVEADARRYLEWGATFVAVGSDLGVFRSATQKLADTFKK</sequence>
+    <xref id="garL_K12" name="garL_K12"/>
+    <matches>
+      <hmmer3-match evalue="1.6E-59" score="212.4">
+        <signature ac="PF03328" desc="HpcH/HpaI aldolase/citrate lyase family" name="HpcH_HpaI">
+          <entry ac="IPR005000" desc="HpcH/HpaI aldolase/citrate lyase domain" name="Aldolase/citrate-lyase_domain" type="DOMAIN">
+            <go-xref category="MOLECULAR_FUNCTION" db="GO" id="GO:0003824" name="catalytic activity"/>
+            <pathway-xref db="MetaCyc" id="PWY-6728" name="methylaspartate cycle"/>
+            <pathway-xref db="MetaCyc" id="PWY-6038" name="citrate degradation"/>
+            <pathway-xref db="MetaCyc" id="PWY-5743" name="3-hydroxypropanoate cycle"/>
+            <pathway-xref db="MetaCyc" id="PWY-5744" name="glyoxylate assimilation"/>
+            <pathway-xref db="MetaCyc" id="PWY-5162" name="2-hydroxypenta-2,4-dienoate degradation"/>
+            <pathway-xref db="MetaCyc" id="PWY-5826" name="hypoglycin biosynthesis"/>
+            <pathway-xref db="MetaCyc" id="PWY-5749" name="itaconate degradation"/>
+            <pathway-xref db="MetaCyc" id="PWY-7275" name="L-homophenylalanine biosynthesis"/>
+            <pathway-xref db="MetaCyc" id="PWY-8216" name="strychnine biosynthesis"/>
+            <pathway-xref db="MetaCyc" id="PWY-7854" name="crotonyl-CoA/ethylmalonyl-CoA/hydroxybutyryl-CoA cycle (engineered)"/>
+            <pathway-xref db="MetaCyc" id="PWY-7294" name="D-xylose degradation IV"/>
+            <pathway-xref db="MetaCyc" id="PWY-7701" name="4-hydroxy-4-methyl-L-glutamate biosynthesis"/>
+            <pathway-xref db="MetaCyc" id="PWY-7722" name="sulfoquinovose degradation II"/>
+            <pathway-xref db="MetaCyc" id="PWY-7295" name="L-arabinose degradation IV"/>
+            <pathway-xref db="MetaCyc" id="PWY-7784" name="reductive acetyl coenzyme A pathway II (autotrophic methanogens)"/>
+            <pathway-xref db="MetaCyc" id="PWY-7649" name="3-hydroxy-L-homotyrosine biosynthesis"/>
+            <pathway-xref db="MetaCyc" id="PWY-1622" name="formaldehyde assimilation I (serine pathway)"/>
+            <pathway-xref db="MetaCyc" id="PWY-5392" name="reductive TCA cycle II"/>
+            <pathway-xref db="MetaCyc" id="PWY-5741" name="ethylmalonyl-CoA pathway"/>
+            <pathway-xref db="MetaCyc" id="PWY-6713" name="L-rhamnose degradation II"/>
+            <pathway-xref db="MetaCyc" id="PWY-7118" name="chitin deacetylation"/>
+            <pathway-xref db="MetaCyc" id="PWY-8305" name="methoxylated aromatic compound degradation II"/>
+          </entry>
+          <signature-library-release library="PFAM" version="36.0"/>
+        </signature>
+        <model-ac>PF03328</model-ac>
+        <locations>
+          <hmmer3-location env-end="246" env-start="20" post-processed="true" score="212.3" evalue="1.8E-59" hmm-start="1" hmm-end="220" hmm-length="221" hmm-bounds="N_TERMINAL_COMPLETE" start="20" end="245" representative="false">
+            <location-fragments>
+              <hmmer3-location-fragment start="20" end="245" dc-status="CONTINUOUS"/>
+            </location-fragments>
+          </hmmer3-location>
+        </locations>
+      </hmmer3-match>
+      <hmmer3-match evalue="1.8E-88" score="298.0">
+        <signature ac="G3DSA:3.20.20.60" name="">
+          <entry ac="IPR040442" desc="Pyruvate kinase-like domain superfamily" name="Pyrv_Kinase-like_dom_sf" type="HOMOLOGOUS_SUPERFAMILY">
+            <pathway-xref db="MetaCyc" id="PWY-5743" name="3-hydroxypropanoate cycle"/>
+            <pathway-xref db="Reactome" id="R-MMU-70171" name="Glycolysis"/>
+            <pathway-xref db="MetaCyc" id="PWY-5162" name="2-hydroxypenta-2,4-dienoate degradation"/>
+            <pathway-xref db="MetaCyc" id="PWY-6142" name="gluconeogenesis II (Methanobacterium thermoautotrophicum)"/>
+            <pathway-xref db="MetaCyc" id="PWY-5749" name="itaconate degradation"/>
+            <pathway-xref db="MetaCyc" id="PWY-7294" name="D-xylose degradation IV"/>
+            <pathway-xref db="MetaCyc" id="PWY-8004" name="Entner-Doudoroff pathway I"/>
+            <pathway-xref db="MetaCyc" id="PWY-7383" name="anaerobic energy metabolism (invertebrates, cytosol)"/>
+            <pathway-xref db="MetaCyc" id="PWY-7649" name="3-hydroxy-L-homotyrosine biosynthesis"/>
+            <pathway-xref db="Reactome" id="R-HSA-163765" name="ChREBP activates metabolic gene expression"/>
+            <pathway-xref db="MetaCyc" id="PWY-7118" name="chitin deacetylation"/>
+            <pathway-xref db="Reactome" id="R-HSA-9692914" name="SARS-CoV-1-host interactions"/>
+            <pathway-xref db="MetaCyc" id="PWY-7218" name="photosynthetic 3-hydroxybutanoate biosynthesis (engineered)"/>
+            <pathway-xref db="MetaCyc" id="PWY-7419" name="FR-900098 and FR-33289 antibiotics biosynthesis"/>
+            <pathway-xref db="MetaCyc" id="PWY-5055" name="nicotinate degradation III"/>
+            <pathway-xref db="MetaCyc" id="PWY-7003" name="glycerol degradation to butanol"/>
+            <pathway-xref db="Reactome" id="R-RNO-70171" name="Glycolysis"/>
+            <pathway-xref db="MetaCyc" id="PWY-6728" name="methylaspartate cycle"/>
+            <pathway-xref db="Reactome" id="R-GGA-352882" name="Glycolysis"/>
+            <pathway-xref db="Reactome" id="R-GGA-70171" name="Glycolysis"/>
+            <pathway-xref db="MetaCyc" id="PWY-6038" name="citrate degradation"/>
+            <pathway-xref db="Reactome" id="R-MMU-6798695" name="Neutrophil degranulation"/>
+            <pathway-xref db="Reactome" id="R-DME-70171" name="Glycolysis"/>
+            <pathway-xref db="MetaCyc" id="PWY-7275" name="L-homophenylalanine biosynthesis"/>
+            <pathway-xref db="MetaCyc" id="PWY-241" name="C4 photosynthetic carbon assimilation cycle, NADP-ME type"/>
+            <pathway-xref db="MetaCyc" id="PWY-6839" name="2-aminoethylphosphonate biosynthesis"/>
+            <pathway-xref db="MetaCyc" id="PWY-7722" name="sulfoquinovose degradation II"/>
+            <pathway-xref db="Reactome" id="R-HSA-210745" name="Regulation of gene expression in beta cells"/>
+            <pathway-xref db="MetaCyc" id="PWY-5747" name="2-methylcitrate cycle II"/>
+            <pathway-xref db="MetaCyc" id="PWY-6886" name="1-butanol autotrophic biosynthesis (engineered)"/>
+            <pathway-xref db="MetaCyc" id="PWY-6713" name="L-rhamnose degradation II"/>
+            <pathway-xref db="Reactome" id="R-CFA-70171" name="Glycolysis"/>
+            <pathway-xref db="MetaCyc" id="PWY-6699" name="oxalate biosynthesis"/>
+            <pathway-xref db="MetaCyc" id="PWY-6901" name="superpathway of glucose and xylose degradation"/>
+            <pathway-xref db="Reactome" id="R-SPO-6798695" name="Neutrophil degranulation"/>
+            <pathway-xref db="MetaCyc" id="PWY-8067" name="methylphosphonate biosynthesis"/>
+            <pathway-xref db="Reactome" id="R-SCE-6798695" name="Neutrophil degranulation"/>
+            <pathway-xref db="MetaCyc" id="PWY-6682" name="dehydrophos biosynthesis"/>
+            <pathway-xref db="MetaCyc" id="PWY-5744" name="glyoxylate assimilation"/>
+            <pathway-xref db="Reactome" id="R-DDI-70171" name="Glycolysis"/>
+            <pathway-xref db="MetaCyc" id="PWY-7854" name="crotonyl-CoA/ethylmalonyl-CoA/hydroxybutyryl-CoA cycle (engineered)"/>
+            <pathway-xref db="MetaCyc" id="PWY-8216" name="strychnine biosynthesis"/>
+            <pathway-xref db="MetaCyc" id="PWY-6339" name="syringate degradation"/>
+            <pathway-xref db="MetaCyc" id="PWY-5723" name="Rubisco shunt"/>
+            <pathway-xref db="MetaCyc" id="PWY-7701" name="4-hydroxy-4-methyl-L-glutamate biosynthesis"/>
+            <pathway-xref db="MetaCyc" id="PWY-7510" name="rhizocticin A and B biosynthesis"/>
+            <pathway-xref db="MetaCyc" id="PWY-7784" name="reductive acetyl coenzyme A pathway II (autotrophic methanogens)"/>
+            <pathway-xref db="MetaCyc" id="PWY-5484" name="glycolysis II (from fructose 6-phosphate)"/>
+            <pathway-xref db="Reactome" id="R-SPO-70171" name="Glycolysis"/>
+            <pathway-xref db="Reactome" id="R-DME-6798695" name="Neutrophil degranulation"/>
+            <pathway-xref db="MetaCyc" id="PWY-8305" name="methoxylated aromatic compound degradation II"/>
+            <pathway-xref db="MetaCyc" id="PWY-6549" name="nitrogen remobilization from senescing leaves"/>
+            <pathway-xref db="MetaCyc" id="PWY-7769" name="phosalacine biosynthesis"/>
+            <pathway-xref db="MetaCyc" id="PWY-2221" name="Entner-Doudoroff pathway III (semi-phosphorylative)"/>
+            <pathway-xref db="MetaCyc" id="PWY-1042" name="glycolysis IV"/>
+            <pathway-xref db="MetaCyc" id="PWY-5826" name="hypoglycin biosynthesis"/>
+            <pathway-xref db="MetaCyc" id="PWY-7117" name="C4 photosynthetic carbon assimilation cycle, PEPCK type"/>
+            <pathway-xref db="Reactome" id="R-DDI-6798695" name="Neutrophil degranulation"/>
+            <pathway-xref db="MetaCyc" id="PWY-6654" name="phosphopantothenate biosynthesis III (archaea)"/>
+            <pathway-xref db="Reactome" id="R-HSA-6798695" name="Neutrophil degranulation"/>
+            <pathway-xref db="Reactome" id="R-SCE-70171" name="Glycolysis"/>
+            <pathway-xref db="MetaCyc" id="PWY-7295" name="L-arabinose degradation IV"/>
+            <pathway-xref db="MetaCyc" id="PWY-8404" name="glycolysis VI (from fructose)"/>
+            <pathway-xref db="MetaCyc" id="PWY-1622" name="formaldehyde assimilation I (serine pathway)"/>
+            <pathway-xref db="MetaCyc" id="PWY-5392" name="reductive TCA cycle II"/>
+            <pathway-xref db="MetaCyc" id="PWY-6322" name="phosphinothricin tripeptide biosynthesis"/>
+            <pathway-xref db="MetaCyc" id="PWY-5741" name="ethylmalonyl-CoA pathway"/>
+            <pathway-xref db="MetaCyc" id="PWY-7115" name="C4 photosynthetic carbon assimilation cycle, NAD-ME type"/>
+            <pathway-xref db="Reactome" id="R-GGA-6798695" name="Neutrophil degranulation"/>
+            <pathway-xref db="MetaCyc" id="PWY-5757" name="fosfomycin biosynthesis"/>
+            <pathway-xref db="Reactome" id="R-HSA-70171" name="Glycolysis"/>
+          </entry>
+          <signature-library-release library="GENE3D" version="4.3.0"/>
+        </signature>
+        <model-ac>1dxeA00</model-ac>
+        <locations>
+          <hmmer3-location env-end="256" env-start="1" post-processed="true" score="297.8" evalue="2.0E-88" hmm-start="3" hmm-end="255" hmm-length="256" hmm-bounds="COMPLETE" start="1" end="256" representative="false">
+            <location-fragments>
+              <hmmer3-location-fragment start="1" end="256" dc-status="CONTINUOUS"/>
+            </location-fragments>
+          </hmmer3-location>
+        </locations>
+      </hmmer3-match>
+      <hmmer3-match evalue="2.5E-125" score="418.6">
+        <signature ac="G3DSA:3.20.20.60:FF:000004" desc="5-keto-4-deoxy-D-glucarate aldolase">
+          <signature-library-release library="FUNFAM" version="4.3.0"/>
+        </signature>
+        <model-ac>3.20.20.60-FF-000004</model-ac>
+        <locations>
+          <hmmer3-location env-end="256" env-start="1" post-processed="false" score="418.5" evalue="2.8E-125" hmm-start="1" hmm-end="257" hmm-length="257" hmm-bounds="COMPLETE" start="1" end="256" representative="false">
+            <location-fragments>
+              <hmmer3-location-fragment start="1" end="256" dc-status="CONTINUOUS"/>
+            </location-fragments>
+          </hmmer3-location>
+        </locations>
+      </hmmer3-match>
+      <hmmer3-match evalue="0.0" score="490.0">
+        <signature ac="TIGR03239" desc="2-dehydro-3-deoxyglucarate aldolase" name="GarL">
+          <entry ac="IPR017648" desc="5-keto-4-deoxy-D-glucarate aldolase" name="GarL" type="FAMILY">
+            <go-xref category="BIOLOGICAL_PROCESS" db="GO" id="GO:0019394" name="glucarate catabolic process"/>
+            <go-xref category="MOLECULAR_FUNCTION" db="GO" id="GO:0008672" name="2-dehydro-3-deoxyglucarate aldolase activity"/>
+          </entry>
+          <signature-library-release library="NCBIFAM" version="14.0"/>
+        </signature>
+        <model-ac>TIGR03239</model-ac>
+        <locations>
+          <hmmer3-location env-end="256" env-start="8" post-processed="false" score="489.8" evalue="0.0" hmm-start="1" hmm-end="249" hmm-length="249" hmm-bounds="COMPLETE" start="8" end="256" representative="false">
+            <location-fragments>
+              <hmmer3-location-fragment start="8" end="256" dc-status="CONTINUOUS"/>
+            </location-fragments>
+          </hmmer3-location>
+        </locations>
+      </hmmer3-match>
+      <hmmer3-match-with-sites evalue="1.6E-11" score="30.4">
+        <signature ac="PIRSR015582-2" name="PIRSR015582-2">
+          <signature-library-release library="PIRSR" version="2023_05"/>
+        </signature>
+        <model-ac>PIRSR015582-2</model-ac>
+        <locations>
+          <hmmer3-location-with-sites env-end="2" env-start="1" score="30.4" evalue="1.6E-11" hmm-start="97" hmm-end="196" hmm-length="258" hmm-bounds="COMPLETE" start="128" end="218" representative="false">
+            <location-fragments>
+              <hmmer3-location-fragment-with-sites start="128" end="218" dc-status="CONTINUOUS"/>
+            </location-fragments>
+            <sites>
+              <hmmer3-site description="Magnesium." numLocations="1">
+                <site-locations>
+                  <site-location residue="D" start="179" end="179"/>
+                </site-locations>
+                <group>2</group>
+                <hmmEnd>156</hmmEnd>
+                <hmmStart>156</hmmStart>
+                <label>METAL</label>
+              </hmmer3-site>
+              <hmmer3-site description="Magnesium." numLocations="1">
+                <site-locations>
+                  <site-location residue="E" start="153" end="153"/>
+                </site-locations>
+                <group>1</group>
+                <hmmEnd>129</hmmEnd>
+                <hmmStart>129</hmmStart>
+                <label>METAL</label>
+              </hmmer3-site>
+            </sites>
+          </hmmer3-location-with-sites>
+        </locations>
+      </hmmer3-match-with-sites>
+      <panther-match ac="PTHR30502:SF4" evalue="4.6E-76" graft-point="ECOLI|EnsemblGenome=BAE77173|UniProtKB=P23522" name="5-KETO-4-DEOXY-D-GLUCARATE ALDOLASE" protein-class="PC00044" score="267.1">
+        <signature ac="PTHR30502" name="2-KETO-3-DEOXY-L-RHAMNONATE ALDOLASE">
+          <entry ac="IPR050251" desc="HpcH/HpaI Aldolase" name="HpcH-HpaI_aldolase" type="FAMILY">
+            <pathway-xref db="MetaCyc" id="PWY-5162" name="2-hydroxypenta-2,4-dienoate degradation"/>
+            <pathway-xref db="MetaCyc" id="PWY-7701" name="4-hydroxy-4-methyl-L-glutamate biosynthesis"/>
+            <pathway-xref db="MetaCyc" id="PWY-6713" name="L-rhamnose degradation II"/>
+            <pathway-xref db="MetaCyc" id="PWY-7722" name="sulfoquinovose degradation II"/>
+          </entry>
+          <signature-library-release library="PANTHER" version="18.0"/>
+        </signature>
+        <model-ac>PTHR30502:SF4</model-ac>
+        <locations>
+          <panther-location env-start="1" env-end="256" hmm-start="9" hmm-end="259" hmm-length="0" hmm-bounds="INCOMPLETE" start="6" end="255" representative="false">
+            <location-fragments>
+              <panther-location-fragment start="6" end="255" dc-status="CONTINUOUS"/>
+            </location-fragments>
+          </panther-location>
+        </locations>
+        <go-xref category="CELLULAR_COMPONENT" db="GO" id="GO:0005737" name="cytoplasm"/>
+        <go-xref category="MOLECULAR_FUNCTION" db="GO" id="GO:0016832" name="aldehyde-lyase activity"/>
+      </panther-match>
+      <profilescan-match>
+        <signature ac="MF_01291" desc="5-keto-4-deoxy-D-glucarate aldolase [garL]." name="KDGluc_aldolase">
+          <entry ac="IPR017648" desc="5-keto-4-deoxy-D-glucarate aldolase" name="GarL" type="FAMILY">
+            <go-xref category="BIOLOGICAL_PROCESS" db="GO" id="GO:0019394" name="glucarate catabolic process"/>
+            <go-xref category="MOLECULAR_FUNCTION" db="GO" id="GO:0008672" name="2-dehydro-3-deoxyglucarate aldolase activity"/>
+          </entry>
+          <signature-library-release library="HAMAP" version="2023_05"/>
+        </signature>
+        <model-ac>MF_01291</model-ac>
+        <locations>
+          <profilescan-location score="68.918869" start="1" end="256" representative="false">
+            <location-fragments>
+              <profilescan-location-fragment start="1" end="256" dc-status="CONTINUOUS"/>
+            </location-fragments>
+            <alignment>Not available</alignment>
+          </profilescan-location>
+        </locations>
+      </profilescan-match>
+      <superfamilyhmmer3-match evalue="3.14E-82">
+        <signature ac="SSF51621" name="Phosphoenolpyruvate/pyruvate domain">
+          <entry ac="IPR015813" desc="Pyruvate/Phosphoenolpyruvate kinase-like domain superfamily" name="Pyrv/PenolPyrv_Kinase-like_dom" type="HOMOLOGOUS_SUPERFAMILY">
+            <go-xref category="MOLECULAR_FUNCTION" db="GO" id="GO:0003824" name="catalytic activity"/>
+            <pathway-xref db="MetaCyc" id="PWY-5743" name="3-hydroxypropanoate cycle"/>
+            <pathway-xref db="Reactome" id="R-MMU-70171" name="Glycolysis"/>
+            <pathway-xref db="MetaCyc" id="PWY-5162" name="2-hydroxypenta-2,4-dienoate degradation"/>
+            <pathway-xref db="MetaCyc" id="PWY-6142" name="gluconeogenesis II (Methanobacterium thermoautotrophicum)"/>
+            <pathway-xref db="MetaCyc" id="PWY-5749" name="itaconate degradation"/>
+            <pathway-xref db="MetaCyc" id="PWY-7124" name="ethene biosynthesis V (engineered)"/>
+            <pathway-xref db="MetaCyc" id="PWY-7294" name="D-xylose degradation IV"/>
+            <pathway-xref db="MetaCyc" id="PWY-8004" name="Entner-Doudoroff pathway I"/>
+            <pathway-xref db="MetaCyc" id="PWY-7383" name="anaerobic energy metabolism (invertebrates, cytosol)"/>
+            <pathway-xref db="MetaCyc" id="PWY-7649" name="3-hydroxy-L-homotyrosine biosynthesis"/>
+            <pathway-xref db="Reactome" id="R-HSA-163765" name="ChREBP activates metabolic gene expression"/>
+            <pathway-xref db="MetaCyc" id="PWY-7118" name="chitin deacetylation"/>
+            <pathway-xref db="Reactome" id="R-HSA-9692914" name="SARS-CoV-1-host interactions"/>
+            <pathway-xref db="MetaCyc" id="PWY-7218" name="photosynthetic 3-hydroxybutanoate biosynthesis (engineered)"/>
+            <pathway-xref db="MetaCyc" id="PWY-7419" name="FR-900098 and FR-33289 antibiotics biosynthesis"/>
+            <pathway-xref db="MetaCyc" id="PWY-5055" name="nicotinate degradation III"/>
+            <pathway-xref db="MetaCyc" id="PWY-7003" name="glycerol degradation to butanol"/>
+            <pathway-xref db="Reactome" id="R-RNO-70171" name="Glycolysis"/>
+            <pathway-xref db="MetaCyc" id="PWY-6728" name="methylaspartate cycle"/>
+            <pathway-xref db="Reactome" id="R-GGA-352882" name="Glycolysis"/>
+            <pathway-xref db="Reactome" id="R-GGA-70171" name="Glycolysis"/>
+            <pathway-xref db="MetaCyc" id="PWY-6038" name="citrate degradation"/>
+            <pathway-xref db="Reactome" id="R-MMU-6798695" name="Neutrophil degranulation"/>
+            <pathway-xref db="Reactome" id="R-DME-70171" name="Glycolysis"/>
+            <pathway-xref db="MetaCyc" id="PWY-7275" name="L-homophenylalanine biosynthesis"/>
+            <pathway-xref db="MetaCyc" id="PWY-241" name="C4 photosynthetic carbon assimilation cycle, NADP-ME type"/>
+            <pathway-xref db="MetaCyc" id="PWY-6839" name="2-aminoethylphosphonate biosynthesis"/>
+            <pathway-xref db="MetaCyc" id="PWY-7722" name="sulfoquinovose degradation II"/>
+            <pathway-xref db="Reactome" id="R-HSA-210745" name="Regulation of gene expression in beta cells"/>
+            <pathway-xref db="MetaCyc" id="PWY-5747" name="2-methylcitrate cycle II"/>
+            <pathway-xref db="MetaCyc" id="PWY-6886" name="1-butanol autotrophic biosynthesis (engineered)"/>
+            <pathway-xref db="MetaCyc" id="PWY-6713" name="L-rhamnose degradation II"/>
+            <pathway-xref db="Reactome" id="R-CFA-70171" name="Glycolysis"/>
+            <pathway-xref db="MetaCyc" id="PWY-6699" name="oxalate biosynthesis"/>
+            <pathway-xref db="MetaCyc" id="PWY-6901" name="superpathway of glucose and xylose degradation"/>
+            <pathway-xref db="MetaCyc" id="PWY-5913" name="partial TCA cycle (obligate autotrophs)"/>
+            <pathway-xref db="Reactome" id="R-SPO-6798695" name="Neutrophil degranulation"/>
+            <pathway-xref db="MetaCyc" id="PWY-8067" name="methylphosphonate biosynthesis"/>
+            <pathway-xref db="Reactome" id="R-SCE-6798695" name="Neutrophil degranulation"/>
+            <pathway-xref db="MetaCyc" id="PWY-6682" name="dehydrophos biosynthesis"/>
+            <pathway-xref db="MetaCyc" id="PWY-5744" name="glyoxylate assimilation"/>
+            <pathway-xref db="Reactome" id="R-DDI-70171" name="Glycolysis"/>
+            <pathway-xref db="MetaCyc" id="PWY-7854" name="crotonyl-CoA/ethylmalonyl-CoA/hydroxybutyryl-CoA cycle (engineered)"/>
+            <pathway-xref db="MetaCyc" id="PWY-8216" name="strychnine biosynthesis"/>
+            <pathway-xref db="MetaCyc" id="PWY-6339" name="syringate degradation"/>
+            <pathway-xref db="MetaCyc" id="PWY-5723" name="Rubisco shunt"/>
+            <pathway-xref db="MetaCyc" id="PWY-7701" name="4-hydroxy-4-methyl-L-glutamate biosynthesis"/>
+            <pathway-xref db="MetaCyc" id="PWY-7510" name="rhizocticin A and B biosynthesis"/>
+            <pathway-xref db="MetaCyc" id="PWY-7784" name="reductive acetyl coenzyme A pathway II (autotrophic methanogens)"/>
+            <pathway-xref db="MetaCyc" id="PWY-5484" name="glycolysis II (from fructose 6-phosphate)"/>
+            <pathway-xref db="Reactome" id="R-SPO-70171" name="Glycolysis"/>
+            <pathway-xref db="Reactome" id="R-DME-6798695" name="Neutrophil degranulation"/>
+            <pathway-xref db="MetaCyc" id="PWY-8305" name="methoxylated aromatic compound degradation II"/>
+            <pathway-xref db="MetaCyc" id="PWY-6549" name="nitrogen remobilization from senescing leaves"/>
+            <pathway-xref db="MetaCyc" id="PWY-7769" name="phosalacine biosynthesis"/>
+            <pathway-xref db="MetaCyc" id="PWY-2221" name="Entner-Doudoroff pathway III (semi-phosphorylative)"/>
+            <pathway-xref db="MetaCyc" id="PWY-6146" name="Methanobacterium thermoautotrophicum biosynthetic metabolism"/>
+            <pathway-xref db="MetaCyc" id="PWY-1042" name="glycolysis IV"/>
+            <pathway-xref db="MetaCyc" id="PWY-5826" name="hypoglycin biosynthesis"/>
+            <pathway-xref db="MetaCyc" id="PWY-7117" name="C4 photosynthetic carbon assimilation cycle, PEPCK type"/>
+            <pathway-xref db="Reactome" id="R-DDI-6798695" name="Neutrophil degranulation"/>
+            <pathway-xref db="MetaCyc" id="PWY-6654" name="phosphopantothenate biosynthesis III (archaea)"/>
+            <pathway-xref db="Reactome" id="R-HSA-6798695" name="Neutrophil degranulation"/>
+            <pathway-xref db="Reactome" id="R-SCE-70171" name="Glycolysis"/>
+            <pathway-xref db="MetaCyc" id="PWY-7295" name="L-arabinose degradation IV"/>
+            <pathway-xref db="MetaCyc" id="PWY-8404" name="glycolysis VI (from fructose)"/>
+            <pathway-xref db="MetaCyc" id="PWY-1622" name="formaldehyde assimilation I (serine pathway)"/>
+            <pathway-xref db="MetaCyc" id="PWY-5392" name="reductive TCA cycle II"/>
+            <pathway-xref db="MetaCyc" id="PWY-6322" name="phosphinothricin tripeptide biosynthesis"/>
+            <pathway-xref db="MetaCyc" id="PWY-5741" name="ethylmalonyl-CoA pathway"/>
+            <pathway-xref db="MetaCyc" id="PWY-7115" name="C4 photosynthetic carbon assimilation cycle, NAD-ME type"/>
+            <pathway-xref db="Reactome" id="R-GGA-6798695" name="Neutrophil degranulation"/>
+            <pathway-xref db="MetaCyc" id="PWY-5757" name="fosfomycin biosynthesis"/>
+            <pathway-xref db="Reactome" id="R-HSA-70171" name="Glycolysis"/>
+          </entry>
+          <signature-library-release library="SUPERFAMILY" version="1.75"/>
+        </signature>
+        <model-ac>0047484</model-ac>
+        <locations>
+          <superfamilyhmmer3-location hmm-length="299" start="4" end="255" representative="false">
+            <location-fragments>
+              <superfamilyhmmer3-location-fragment start="4" end="255" dc-status="CONTINUOUS"/>
+            </location-fragments>
+          </superfamilyhmmer3-location>
+        </locations>
+      </superfamilyhmmer3-match>
+    </matches>
+  </protein>
+</protein-matches>
