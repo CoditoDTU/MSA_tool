@@ -13,6 +13,7 @@ usage() {
   echo "  -m <email>: Valid email ex: JhonDoe@gmail.com"
   echo "  -p <prefix>: Desired name for the protein prefix. Ex: Trypsin --> tryp"
   echo "  -l <max_length>: Maximum sequence length for filtering. Default at 504"
+  echo "  -o <output_folder>: Selected results folder of choice(.csv files will be here)"
   exit 1
 }
 
@@ -22,12 +23,13 @@ main(){
     # Initializing default parameters
     max_length=504
     # Input arguments
-    while getopts ":i:p:m:l:h" opt; do
+    while getopts ":i:p:m:l:o:h" opt; do
     case $opt in
         i) input_sequence="$OPTARG" ;;
         p) prefix="$OPTARG" ;;
         m) mail="$OPTARG" ;;
         l) max_length="$OPTARG" ;;
+        o) output_folder="$OPTARG" ;;
         h) usage ;;
         \?) echo "Invalid option -$OPTARG" >&2; usage ;;
     esac
@@ -53,16 +55,15 @@ main(){
 
     # MODULE 3: FILTERING:
     filtered_fasta_name="data/${protein_ID%.fasta}_filtered.fasta" # Output name
+
     functions/filter.sh -i "data/${protein_ID}_raw.fasta" -o "$filtered_fasta_name" -l "$max_length"
 
-    # MODULE 4: CLUSTERING
-    functions/clustering_A.sh -i "$filtered_fasta_name" -p "$prefix" -o results
 
     # MODULE 5: ALIGNMENT: 
-    functions/alignment_a.sh -i results -H data/"$hmmID".hmm -p "$prefix" -f "$input_sequence"
+    functions/alignment_b.sh -i "$filtered_fasta_name" -H data/"$hmmID".hmm -f "$input_sequence"
 
     # MODULE 6: CONSERVATION ANALYSIS:
-    functions/cons_analysis.sh -i results -p "$prefix"
+    functions/cons_analysis_B.sh -i "${filtered_fasta_name%.fasta}_aligned.fasta" -p "$prefix" -o "$output_folder"
 
 }
 

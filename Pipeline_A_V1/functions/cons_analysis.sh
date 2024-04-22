@@ -6,7 +6,6 @@ usage() {
     echo "Options:"
     echo "  -i <folder_path>: Path to the folder containing the input files"
     echo "  -p <prefix>: Prefix for file matching"
-    echo "  -t <threshold>: threshold of conservation Identity (float 0-1)"
     exit 1
 }
 
@@ -45,7 +44,7 @@ for file in "$folder_path"/"${prefix}"_clu_seq*_og_aligned.fasta; do
         # Run the Python script for the current file
         python3 functions/conserved_seq.py -i "$file" -o "$folder_path/${prefix}_clu_${cluster_number}_cs.csv"
 
-        echo "Python script executed for $file"
+        echo "Conservation analysis executed for $file"
     else
         echo "File $file does not exist"
     fi
