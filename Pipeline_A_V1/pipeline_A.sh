@@ -38,7 +38,9 @@ main(){
     echo "Error: Missing required option(s)." >&2
     usage
     fi
-
+    
+    # Record the start time
+    start_time=$(date +%s)
 
     # MODULE 1: IPRSCAN
     python3 functions/iprscan.py --email "$mail" --stype p --sequence "$input_sequence" --outfile "$prefix"
@@ -63,6 +65,19 @@ main(){
 
     # MODULE 6: CONSERVATION ANALYSIS:
     functions/cons_analysis.sh -i results -p "$prefix"
+
+    # Record the end time
+    end_time=$(date +%s)
+
+    # Calculate the elapsed time in seconds
+    elapsed_time=$((end_time - start_time))
+
+    # Convert elapsed time from seconds to minutes
+    elapsed_minutes=$((elapsed_time / 60))
+    
+    # Print the elapsed time in minutes
+    echo "Elapsed time: $elapsed_minutes minutes"
+
 
 }
 
