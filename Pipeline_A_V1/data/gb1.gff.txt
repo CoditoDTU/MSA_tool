@@ -1,0 +1,17 @@
+##gff-version 3
+##feature-ontology http://song.cvs.sourceforge.net/viewvc/song/ontology/sofa.obo?revision=1.269
+##interproscan-version 5.67-99.0
+##sequence-region gb1-test-sequence 1 56
+gb1-test-sequence	.	polypeptide	1	56	.	+	.	ID=gb1-test-sequence;md5=6efe2e14e8ed04b895382fb41d258b0c
+gb1-test-sequence	Gene3D	protein_match	1	56	6.0E-34	+	.	date=24-04-2024;Target=gb1-test-sequence 1 56;ID=match$1_1_56;Name=G3DSA:3.10.20.10;status=T
+gb1-test-sequence	SUPERFAMILY	protein_match	1	56	2.55E-31	+	.	date=24-04-2024;Target=gb1-test-sequence 1 56;ID=match$2_1_56;Name=SSF54358;status=T
+gb1-test-sequence	Pfam	protein_match	3	56	2.1E-8	+	.	date=24-04-2024;Target=gb1-test-sequence 3 56;Ontology_term="GO:0005618";ID=match$3_3_56;signature_desc=B domain;Name=PF01378;status=T;Dbxref="InterPro:IPR000724"
+##FASTA
+>gb1-test-sequence
+MQYKLILNGKTLKGETTTEAVDAATAEKVFKQYANDNGVDGEWTYDDATKTFTVTE
+>match$1_1_56
+MQYKLILNGKTLKGETTTEAVDAATAEKVFKQYANDNGVDGEWTYDDATKTFTVTE
+>match$2_1_56
+MQYKLILNGKTLKGETTTEAVDAATAEKVFKQYANDNGVDGEWTYDDATKTFTVTE
+>match$3_3_56
+YKLILNGKTLKGETTTEAVDAATAEKVFKQYANDNGVDGEWTYDDATKTFTVTE

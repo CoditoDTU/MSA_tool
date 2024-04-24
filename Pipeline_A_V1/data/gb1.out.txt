@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?><protein-matches xmlns="https://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/schemas" interproscan-version="5.67-99.0">
+  <protein>
+    <sequence md5="6efe2e14e8ed04b895382fb41d258b0c">MQYKLILNGKTLKGETTTEAVDAATAEKVFKQYANDNGVDGEWTYDDATKTFTVTE</sequence>
+    <xref id="gb1-test-sequence" name="gb1-test-sequence"/>
+    <matches>
+      <hmmer3-match evalue="5.5E-34" score="118.2">
+        <signature ac="G3DSA:3.10.20.10" name="">
+          <signature-library-release library="GENE3D" version="4.3.0"/>
+        </signature>
+        <model-ac>1mvkH00</model-ac>
+        <locations>
+          <hmmer3-location env-end="56" env-start="1" post-processed="true" score="118.1" evalue="6.0E-34" hmm-start="1" hmm-end="56" hmm-length="56" hmm-bounds="COMPLETE" start="1" end="56" representative="false">
+            <location-fragments>
+              <hmmer3-location-fragment start="1" end="56" dc-status="CONTINUOUS"/>
+            </location-fragments>
+          </hmmer3-location>
+        </locations>
+      </hmmer3-match>
+      <hmmer3-match evalue="2.0E-8" score="45.8">
+        <signature ac="PF01378" desc="B domain" name="IgG_binding_B">
+          <entry ac="IPR000724" desc="IgG-binding B" name="IgG-bd_B" type="DOMAIN">
+            <go-xref category="CELLULAR_COMPONENT" db="GO" id="GO:0005618" name="cell wall"/>
+          </entry>
+          <signature-library-release library="PFAM" version="36.0"/>
+        </signature>
+        <model-ac>PF01378</model-ac>
+        <locations>
+          <hmmer3-location env-end="56" env-start="1" post-processed="true" score="45.7" evalue="2.1E-8" hmm-start="9" hmm-end="66" hmm-length="68" hmm-bounds="C_TERMINAL_COMPLETE" start="3" end="56" representative="true">
+            <location-fragments>
+              <hmmer3-location-fragment start="3" end="56" dc-status="CONTINUOUS"/>
+            </location-fragments>
+          </hmmer3-location>
+        </locations>
+      </hmmer3-match>
+      <superfamilyhmmer3-match evalue="2.55E-31">
+        <signature ac="SSF54358" name="Immunoglobulin-binding domains">
+          <signature-library-release library="SUPERFAMILY" version="1.75"/>
+        </signature>
+        <model-ac>0048762</model-ac>
+        <locations>
+          <superfamilyhmmer3-location hmm-length="70" start="1" end="56" representative="false">
+            <location-fragments>
+              <superfamilyhmmer3-location-fragment start="1" end="56" dc-status="CONTINUOUS"/>
+            </location-fragments>
+          </superfamilyhmmer3-location>
+        </locations>
+      </superfamilyhmmer3-match>
+    </matches>
+  </protein>
+</protein-matches>
