@@ -11,6 +11,8 @@ def get_prot_IDs(data):
             signature_entry_type = data['results'][0]['matches'][n]["signature"].get('entry', {}).get('type')
             if signature_entry_type == 'FAMILY':
                 protein_IDs.append(data['results'][0]['matches'][n]["signature"]['entry']['accession']) # Accession gives us protein ID
+            elif signature_entry_type == 'DOMAIN':
+                protein_IDs.append(data['results'][0]['matches'][n]["signature"]['entry']['accession'])
         except AttributeError:
             # If 'signature' or 'entry' is not found, continue with the next iteration
             continue
