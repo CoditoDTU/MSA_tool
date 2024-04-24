@@ -61,10 +61,10 @@ main(){
     functions/filter.sh -i "data/${protein_ID}_raw.fasta" -o "$filtered_fasta_name" -l "$max_length"
 
 
-    # MODULE 5: ALIGNMENT: 
+    # MODULE 4: ALIGNMENT: 
     functions/alignment_b.sh -i "$filtered_fasta_name" -H data/"$hmmID".hmm -f "$input_sequence"
 
-    # MODULE 6: CONSERVATION ANALYSIS:
+    # MODULE 5: CONSERVATION ANALYSIS:
     functions/cons_analysis_B.sh -i "${filtered_fasta_name%.fasta}_aligned.fasta" -p "$prefix" -o "$output_folder"
     
     # Record the end time
