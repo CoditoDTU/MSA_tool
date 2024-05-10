@@ -1,5 +1,5 @@
 <execution>
-  <commandLine>singularity exec -B /nfs/public/ro/es_codon/appbin/linux-x86_64/interproscan-5.67-99.0:/iprscan5 /nfs/public/ro/es_codon/appbin/linux-x86_64/singularity/iprscan5:latest /iprscan5/interproscan.sh --iprlookup --seqtype p -cpu 4 -i iprscan5-R20240424-013951-0501-8435453-p1m.sequence --output-file-base iprscan5-R20240424-013951-0501-8435453-p1m.output -f tsv,XML,gff3,json  --goterms --pathways</commandLine>
+  <commandLine>singularity exec -B /nfs/public/ro/es_codon/appbin/linux-x86_64/interproscan-5.67-99.0:/iprscan5 /nfs/public/ro/es_codon/appbin/linux-x86_64/singularity/iprscan5:latest /iprscan5/interproscan.sh --iprlookup --seqtype p -cpu 4 -i iprscan5-R20240510-170044-0937-5854494-p1m.sequence --output-file-base iprscan5-R20240510-170044-0937-5854494-p1m.output -f tsv,XML,gff3,json  --goterms --pathways</commandLine>
   <userParameters class="linked-hash-map">
     <entry>
       <string>program</string>
@@ -27,16 +27,16 @@
     </entry>
     <entry>
       <string>sequence</string>
-      <string>/nfs/public/rw/es/projects/wp-jdispatcher/sources/prod/jobs/iprscan5/rest/20240424/0138/iprscan5-R20240424-013951-0501-8435453-p1m.sequence</string>
+      <string>/nfs/public/rw/es/projects/wp-jdispatcher/sources/prod/jobs/iprscan5/rest/20240510/1700/iprscan5-R20240510-170044-0937-5854494-p1m.sequence</string>
     </entry>
   </userParameters>
-  <outputLocation>file:/nfs/public/rw/es/projects/wp-jdispatcher/sources/prod/jobs/iprscan5/rest/20240424/0138//iprscan5-R20240424-013951-0501-8435453-p1m.output</outputLocation>
-  <errorLocation>file:/nfs/public/rw/es/projects/wp-jdispatcher/sources/prod/jobs/iprscan5/rest/20240424/0138//iprscan5-R20240424-013951-0501-8435453-p1m.error</errorLocation>
+  <outputLocation>file:/nfs/public/rw/es/projects/wp-jdispatcher/sources/prod/jobs/iprscan5/rest/20240510/1700//iprscan5-R20240510-170044-0937-5854494-p1m.output</outputLocation>
+  <errorLocation>file:/nfs/public/rw/es/projects/wp-jdispatcher/sources/prod/jobs/iprscan5/rest/20240510/1700//iprscan5-R20240510-170044-0937-5854494-p1m.error</errorLocation>
   <toolId>iprscan5</toolId>
-  <jobId>iprscan5-R20240424-013951-0501-8435453-p1m</jobId>
-  <email>rogall@dtu.dk</email>
+  <jobId>iprscan5-R20240510-170044-0937-5854494-p1m</jobId>
+  <email>rgoall@dtu.dk</email>
   <emailNotification>false</emailNotification>
-  <clientId>190.43.135.242</clientId>
+  <clientId>190.232.101.86</clientId>
   <executionContext>rest</executionContext>
   <additionalProperties class="uk.ac.ebi.properties.commonsconfiguration.CommonsConfigurationPropertiesContainer">
     <property key="parameter.excludes">program, version</property>
