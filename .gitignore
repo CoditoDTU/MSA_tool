@@ -3,3 +3,5 @@ tryp_filt_aligned.fasta
 *_filtered_aligned.fasta"
 *aligned.fasta"
 Pipeline_A_V1/nohup.out
+Pipeline_B_V1/nohup.out
+Pipeline_C_V1/nohup.out
