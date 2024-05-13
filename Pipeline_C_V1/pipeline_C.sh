@@ -61,10 +61,10 @@ main(){
     functions/clustering_c.sh -i "$filtered_fasta_name" -p "$prefix" -f "$input_sequence"  -o results/
 
     # MODULE 5: ALIGNMENT: 
-    #functions/alignment_c.sh -i results -H data/"$hmmID".hmm -p "$prefix" -f "$input_sequence"
+    functions/alignment_c.sh -i results -H data/"$hmmID".hmm -p "$prefix" -f "$input_sequence"
 
     # MODULE 6: CONSERVATION ANALYSIS:
-    #functions/cons_analysis_c.sh -i results -p "$prefix"
+    functions/cons_analysis_c.sh -i results -p "$prefix"
     
     # Record the end time
     end_time=$(date +%s)
