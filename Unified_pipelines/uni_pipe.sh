@@ -41,13 +41,13 @@ main(){
     start_time=$(date +%s)
 
     if  [ "$pipeline" = "a" ]; then
-        ./pipeline_A.sh -i "$input_sequence" -m "$mail" -p "$prefix" -l "$max_length"
+        ./pipeline_A.sh -i "$input_sequence" -m "$mail" -p "$prefix" -l "$max_length" -o "$output_folder"
     
     elif [ "$pipeline" = "b" ]; then
         ./pipeline_B.sh -i "$input_sequence" -m "$mail" -p "$prefix" -l "$max_length" -o "$output_folder"
 
     elif [ "$pipeline" = "c" ]; then
-        ./pipeline_C.sh -i "$input_sequence" -m "$mail" -p "$prefix" -l "$max_length"
+        ./pipeline_C.sh -i "$input_sequence" -m "$mail" -p "$prefix" -l "$max_length" -o "$output_folder"
     fi
 
 

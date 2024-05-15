@@ -32,8 +32,8 @@ while getopts ":i:o:p:" opt; do
 done
 
 # Check if the folder path is provided
-if [ -z "$output_folder_path" ]; then
-    echo "Error: Folder path (-i) must be provided."
+if [ -z "$output_folder_path" || -z "$input_folder_path" ]; then
+    echo "Error: Folder paths (-i & -o) must be provided."
     usage  # Display usage information if the folder path is missing
 fi
 

@@ -22,11 +22,12 @@ main(){
     # Initializing default parameters
     max_length=504
     # Input arguments
-    while getopts ":i:p:m:l:h" opt; do
+    while getopts ":i:p:m:o:l:h" opt; do
     case $opt in
         i) input_sequence="$OPTARG" ;;
         p) prefix="$OPTARG" ;;
         m) mail="$OPTARG" ;;
+        o) output_folder="$OPTARG" ;;
         l) max_length="$OPTARG" ;;
         h) usage ;;
         \?) echo "Invalid option -$OPTARG" >&2; usage ;;
@@ -64,7 +65,7 @@ main(){
     functions/alignment_c.sh -i results -H data/"$hmmID".hmm -p "$prefix" -f "$input_sequence"
 
     # MODULE 6: CONSERVATION ANALYSIS:
-    functions/cons_analysis_c.sh -i results -p "$prefix"
+    functions/cons_analysis_c.sh -i results -p "$prefix" -o "$output_folder"
     
     # Record the end time
     end_time=$(date +%s)
