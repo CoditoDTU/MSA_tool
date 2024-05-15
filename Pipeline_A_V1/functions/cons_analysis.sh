@@ -32,13 +32,13 @@ while getopts ":i:o:p:" opt; do
 done
 
 # Check if the folder path is provided
-if [ -z "$folder_path" ]; then
+if [ -z "$output_folder_path" ]; then
     echo "Error: Folder path (-i) must be provided."
     usage  # Display usage information if the folder path is missing
 fi
 
 # Loop through each file in the folder with the specified prefix
-for file in "$folder_path"/"${prefix}"_clu_seq*_og_aligned.fasta; do
+for file in "$output_folder_path"/"${prefix}"_clu_seq*_og_aligned.fasta; do
     # Check if the file exists
     if [ -f "$file" ]; then
         # Extract cluster number from the filename
