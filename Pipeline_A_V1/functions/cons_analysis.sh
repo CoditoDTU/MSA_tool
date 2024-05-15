@@ -38,7 +38,7 @@ if [ -z "$output_folder_path" ]; then
 fi
 
 # Loop through each file in the folder with the specified prefix
-for file in "$output_folder_path"/"${prefix}"_clu_seq*_og_aligned.fasta; do
+for file in "$input_folder_path"/"${prefix}"_clu_seq*_og_aligned.fasta; do
     # Check if the file exists
     if [ -f "$file" ]; then
         # Extract cluster number from the filename
