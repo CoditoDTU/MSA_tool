@@ -9,7 +9,7 @@ usage() {
   echo "  -m <email>: Valid email ex: JhonDoe@gmail.com"
   echo "  -p <prefix>: Desired name for the protein prefix. Ex: Trypsin --> tryp"
   echo "  -l <max_length>: Maximum sequence length for filtering. Default at 504"
-  echo "  -t <pipeline to execute>: Select which pipeline to use if A,B and C"
+  echo "  -t <pipeline to execute>: Select which pipeline to use if a,b and c"
   echo "  -o <Output directory>: Select where your results should go"
   exit 1
 }
